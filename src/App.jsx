@@ -1,16 +1,13 @@
-import { useState } from 'react'
-
-import './App.css'
-import PageLogin from './components/pages/login/PageLogin.jsx'
+import { Outlet } from "react-router-dom";
+import "./App.css";
 
 function App() {
-  
-
   return (
     <>
-     <PageLogin />
+      <div>
+        <Outlet />
+      </div>
     </>
-  )
+  );
 }
-
-export default App
+export default App;
