@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./loginForm.css"
-
+import { BsPersonCircle } from "react-icons/bs"
 
 import styled from "styled-components"
 //import theme from "/src/theme/index.js"
 //import LogoQuickBurger from "../../LogoQuickBurger.jsx";
-
 
 function LoginForm() {
   const [name, setName] = useState("");
@@ -34,6 +33,8 @@ function LoginForm() {
         <h2>Connectez-vous</h2>
       </div>
       <div>
+      <div className="input-with-icon">
+      <BsPersonCircle className="icon"/>
         <input
           className="inputName"
           type="text"
@@ -42,6 +43,7 @@ function LoginForm() {
           placeholder="Entrez votre prénom..."
           required
         />
+      </div>
         <Link to={`/order/${name}`}>
           <button>Accéder à mon espace</button>{" "}
         </Link>
@@ -76,6 +78,38 @@ const LoginFormStyled = styled.form`
   color: white;
   font-size: 36px;
  }
+
+ .input-with-icon {
+  //border: 1px solid yellow;
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 18px 24px;
+  margin: 18px 0;
+
+  .icon {
+    //color: red;
+    font-size: 15px;
+    margin-right: 8px;
+    color: #93a2b1;
+  }
+
+  input {
+    //background: blue;
+    border: none;
+    font-size: 15px;
+    color: #17161a;
+  }
+
+  &::placeholder {
+    background: white;
+    color: lightgrey;
+  }
+
+ }
+
+
 `
 
 export default LoginForm;
