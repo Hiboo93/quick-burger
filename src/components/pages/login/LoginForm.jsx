@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./loginForm.css"
 
-import { IoChevronForward } from "react-icons/io5"
+
 import { BsPersonCircle } from "react-icons/bs"
+import { IoChevronForward } from "react-icons/io5"
 import styled from "styled-components"
-import TextInput from "./TextInput.jsx";
+import TextInput from "../../reusable-ui/TextInput.jsx";
+import PrimaryButton from "../../reusable-ui/PrimaryButton.jsx";
 //import theme from "/src/theme/index.js"
 //import LogoQuickBurger from "../../LogoQuickBurger.jsx";
 
@@ -43,12 +45,11 @@ function LoginForm() {
           required
           Icon={<BsPersonCircle className="icon" />}
         />
-        <Link to={`/order/${name}`}>
-          <button className="button-with-icon">
-            <span>Accéder à mon espace</span>
-            <IoChevronForward className="icon" />
-          </button>
-        </Link>
+        <PrimaryButton
+          label={"Accédez à mon espace"}
+          name={name}
+          Icon={<IoChevronForward className="icon" />}
+        />
       </div>
     </LoginFormStyled>
   );
@@ -80,51 +81,13 @@ const LoginFormStyled = styled.form`
   font-size: 36px;
  }
 
- .button-with-icon {
-  width: 100%;
-  border: 1px solid red;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  white-space: nowrap;
-  text-decoration: none;
-  line-height: 1;
-
-  padding: 18px 24px;
-  border-radius: 5px;
-  font-size: 15px;
-  font-weight: 800;
-  color: white;
-  background-color: #ff9f1b;
-  border: 1px solid #ff9f1b;
-
-  &:hover:not(:disabled) {
-    background-color: white;
-    color: #ff9f1b;
-    border: 1px solid #ff9f1b;
-    transition: all 200ms ease-out;
-  }
-
-  &:active {
-    color: white;
-    background-color: #ff9f1b;
-    border: 1px solid #ff9f1b;
-  }
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-
-  .icon {
+ .icon {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 15px;
     margin-left: 10px;
   }
- }
 `
 
 export default LoginForm;
