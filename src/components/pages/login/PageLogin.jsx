@@ -1,6 +1,5 @@
 import LogoQuickBurger from "../../reusable-ui/LogoQuickBurger.jsx";
 import LoginForm from "./LoginForm.jsx";
-import "./pageLogin.css"
 import styled from "styled-components"
 //import imgBurger from "/src/assets/F03 burger-background.jpg"
 
@@ -25,10 +24,9 @@ const PageLoginStyled = styled.div`
   
   ::before {
     content: "";
-    background: url("/assets/F03 burger-background.jpg");
+    background: url("/assets/F03 burger-background.jpg") rgba(0, 0, 0, 0.7);
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     background-blend-mode: darken;
     
     position: absolute;

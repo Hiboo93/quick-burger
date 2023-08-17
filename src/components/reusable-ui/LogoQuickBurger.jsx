@@ -1,6 +1,5 @@
 import styled from "styled-components"
-
-import "./logoQuickBurger.css"
+import { theme } from "../../theme/index.js";
 
 function LogoQuickBurger() {
   return (
@@ -16,15 +15,15 @@ const LogoStyled = styled.div`
   //border: 1px solid blue;
   display: flex;
   align-items: center;
-  //transform: scale(2.5);
+  transform: scale(2.5);
 
   h1 {
     display: inline;
     text-align: center;
-    color: #ffa01b;
-    font-size: 110px;
+    color: ${theme.colors.primary};
+    font-size: ${theme.fonts.size.P4};
     line-height: 1em;
-    font-weight: 700;
+    font-weight: ${theme.fonts.weights.bold};
     text-transform: uppercase;
     letter-spacing: 1.5px;
     font-family: "Amatic SC", cursive;
@@ -33,8 +32,8 @@ const LogoStyled = styled.div`
   img {
     object-fit: contain;
     object-position: center;
-    height: 150px;
-    width: 200px;
+    height: 60px;
+    width: 80px;
     margin: 0 5px;
   }
 `;
