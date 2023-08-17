@@ -22,7 +22,7 @@ const LogoStyled = styled.div`
     display: inline;
     text-align: center;
     color: #ffa01b;
-    font-size: 36px;
+    font-size: 110px;
     line-height: 1em;
     font-weight: 700;
     text-transform: uppercase;
@@ -33,8 +33,8 @@ const LogoStyled = styled.div`
   img {
     object-fit: contain;
     object-position: center;
-    height: 60px;
-    width: 80px;
+    height: 150px;
+    width: 200px;
     margin: 0 5px;
   }
 `;
