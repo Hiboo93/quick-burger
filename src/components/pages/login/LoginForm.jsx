@@ -5,7 +5,7 @@ import "./loginForm.css"
 import { IoChevronForward } from "react-icons/io5"
 import { BsPersonCircle } from "react-icons/bs"
 import styled from "styled-components"
-import Input from "./Input.jsx";
+import TextInput from "./TextInput.jsx";
 //import theme from "/src/theme/index.js"
 //import LogoQuickBurger from "../../LogoQuickBurger.jsx";
 
@@ -36,7 +36,7 @@ function LoginForm() {
         <h2>Connectez-vous</h2>
       </div>
       <div>
-        <Input
+        <TextInput
           value={name}
           onChange={handleChange}
           placeholder={"Entrez votre prénom"}

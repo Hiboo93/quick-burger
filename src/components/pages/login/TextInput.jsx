@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-function Input({ value, onChange, Icon, ...extraProps }) {
+function TextInput({ value, onChange, Icon, ...extraProps }) {
 
   return (
     <InputStyled>
@@ -49,4 +49,4 @@ const InputStyled =  styled.div`
   }
  `
 
-export default Input
+export default TextInput
