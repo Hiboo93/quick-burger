@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "./loginForm.css"
-
-
+import { useNavigate } from "react-router-dom";
+import { BsPersonCircle } from "react-icons/bs"
+import { IoChevronForward } from "react-icons/io5"
 import styled from "styled-components"
+import TextInput from "../../reusable-ui/TextInput.jsx";
+import PrimaryButton from "../../reusable-ui/PrimaryButton.jsx";
+import { theme } from "../../../theme/index.js";
 //import theme from "/src/theme/index.js"
 //import LogoQuickBurger from "../../LogoQuickBurger.jsx";
-
 
 function LoginForm() {
   const [name, setName] = useState("");
@@ -18,37 +19,72 @@ function LoginForm() {
     navigate(`/order/${name}`);
   };
 
-  const handleInput = (event) => {
+  const handleChange = (event) => {
     setName(event.target.value);
   };
+
   return (
-    <div>
-      <LoginFormStyled
-        action="submit"
-        onSubmit={handleSubmit}
-        className="form-container"
-      >
+    <LoginFormStyled
+      action="submit"
+      onSubmit={handleSubmit}
+      className="form-container"
+    >
+      <div>
         <h1>Bienvenue chez-nous !</h1>
-        <br/>
+        <hr />
         <h2>Connectez-vous</h2>
-        <input
-          className="inputName"
-          type="text"
-          onChange={handleInput}
+      </div>
+      <div>
+        <TextInput
           value={name}
-          placeholder="Entrez votre prénom..."
+          onChange={handleChange}
+          placeholder={"Entrez votre prénom"}
           required
+          Icon={<BsPersonCircle className="icon" />}
         />
-        <Link to={`/order/${name}`}>
-          <button>Accéder à mon espace</button>{" "}
-        </Link>
-      </LoginFormStyled>
-    </div>
-  );
+        <PrimaryButton
+          label={"Accédez à mon espace"}
+          name={name}
+          Icon={<IoChevronForward className="icon" />}
+        />
+      </div>
+    </LoginFormStyled>
+  )
 }
 
 const LoginFormStyled = styled.form`
- background: green;
+ text-align: center;
+ max-width: 500px;
+ min-width: 400px;
+ margin: 0px auto;
+ padding: 40px ${theme.spacing.lg};
+ border-radius: ${theme.borderRadius.round};
+ font-family: "Amatic SC", cursive;
+
+  hr {
+    border: 1.5px solid #f56a2c;
+    margin-bottom: ${theme.gridUnit * 5}px;
+  }
+
+ h1 {
+  color: white;
+  font-size: ${theme.fonts.size.P5};
+ }
+ 
+ h2 {
+  //color: #8e8b8b;
+  margin: 20px 10px 10px;
+  color: ${theme.colors.white};
+  font-size: ${theme.fonts.size.P4};
+ }
+
+ .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: ${theme.fonts.size.P0};
+    margin-left: 10px;
+  }
 `
 
 export default LoginForm;
