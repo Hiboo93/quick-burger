@@ -5,7 +5,7 @@ function LogoQuickBurger() {
   return (
     <LogoStyled>
       <h1>QUICK</h1>
-      <img src="/assets/F03 logo-orange.png" alt="" />
+      <img src="/assets/logo-orange.png" alt="" />
       <h1>BURGER</h1>
     </LogoStyled>
   )
@@ -15,7 +15,7 @@ const LogoStyled = styled.div`
   //border: 1px solid blue;
   display: flex;
   align-items: center;
-  transform: scale(2.5);
+  //transform: scale(5);
 
   h1 {
     display: inline;

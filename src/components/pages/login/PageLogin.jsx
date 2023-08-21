@@ -24,7 +24,7 @@ const PageLoginStyled = styled.div`
   
   ::before {
     content: "";
-    background: url("/assets/F03 burger-background.jpg") rgba(0, 0, 0, 0.7);
+    background: url("/assets/burger-background.jpg") rgba(0, 0, 0, 0.7);
     background-size: cover;
     background-position: center;
     background-blend-mode: darken;
