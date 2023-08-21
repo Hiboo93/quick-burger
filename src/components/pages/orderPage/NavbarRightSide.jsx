@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 import { Link } from 'react-router-dom'
 
-function NavbarRightSide({username}) {
+function NavbarRightSide({ username }) {
   return (
     <NavbarRightSideStyled className='right-side'>
     Right
