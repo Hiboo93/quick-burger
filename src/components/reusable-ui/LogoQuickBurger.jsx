@@ -1,9 +1,9 @@
 import styled from "styled-components"
 import { theme } from "../../theme/index.js";
 
-function LogoQuickBurger({ className }) {
+function LogoQuickBurger({ className, onClick }) {
   return (
-    <LogoStyled className={className}>
+    <LogoStyled className={className} onClick={onClick}>
       <h1>QUICK</h1>
       <img src="/assets/logo-orange.png" alt="" />
       <h1>BURGER</h1>
