@@ -11,7 +11,14 @@ export default function Menu() {
   return (
     <MenuStyled className="menu">
       {menu.map((produit) => {
-        return <Product key={produit.id} title={produit.title} imageSource={produit.imageSource} price={produit.price}/>
+        return (
+          <Product
+            key={produit.id}
+            title={produit.title}
+            imageSource={produit.imageSource}
+            price={produit.price}
+          />
+        );
       })}
     </MenuStyled>
   );
@@ -26,26 +33,4 @@ const MenuStyled = styled.div`
     justify-items: center;
     box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
 
-    .produit {
-        background: red;
-        width: 240px;
-        height: 330px;
-
-        .image {
-            border: 1px solid fuchsia;
-            width: 100px;
-            height: auto;
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-        }
-
-        .description {
-            border: 1px solid fuchsia;
-        }
-    }
-  
 `;
