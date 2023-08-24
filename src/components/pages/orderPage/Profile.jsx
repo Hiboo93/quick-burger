@@ -8,7 +8,7 @@ export default function Profile({ username }) {
     <ProfileStyled>
       <div className="info">
         <p>
-          Hey, <b>{username}</b>
+          HEY, <b>{username}</b>
         </p>
         <Link to="/">
           <div className="description">
