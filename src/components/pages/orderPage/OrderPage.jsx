@@ -1,11 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { styled } from "styled-components";
-import Navbar from "./Navbar.jsx";
-import Main from "./main.jsx";
 import { theme } from "../../../theme/index.js";
-
-
+import Navbar from "./navbar/Navbar.jsx";
+import Main from "./main/Main.jsx";
 
 function OrderPage() {
   const { username } = useParams();
@@ -13,8 +11,8 @@ function OrderPage() {
   return (
     <OrderPageStyled>
       <div className="container">
-      <Navbar username={username} />
-      <Main/>
+        <Navbar username={username} />
+        <Main />
       </div>
     </OrderPageStyled>
   );
