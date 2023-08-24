@@ -4,19 +4,29 @@ import { fakeMenu2 } from '../../../../fakeData/fakeMenu.js';
 import { theme } from '../../../../theme/index.js';
 
 export default function Menu() {
-
-    const [menu, setMenu] = useState(fakeMenu2)
-    console.log(menu);
+  const [menu, setMenu] = useState(fakeMenu2);
+  console.log(menu);
 
   return (
-    <MenuStyled >
-        {
-            menu.map(produit => {
-                return <div key={produit.id} className='produit'>{produit.title} </div>
-            })
-        }
+    <MenuStyled className="menu">
+      {menu.map((produit) => {
+        return (
+          <div key={produit.id} className="produit">
+            <div className="image">
+              <img src={produit.imageSource} alt={produit.title} />
+            </div>
+            <div className="info-text">
+              <div className="title">{produit.title}</div>
+              <div className="description">
+                <div className="price">{produit.price}</div>
+                <button className='add-button'>Ajouter</button>
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </MenuStyled>
-  )
+  );
 }
 
 const MenuStyled = styled.div`
@@ -32,6 +42,16 @@ const MenuStyled = styled.div`
         background: red;
         width: 240px;
         height: 330px;
+
+        .image {
+            border: 1px solid fuchsia;
+            width: 100px;
+            height: auto;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
     }
   
 `;

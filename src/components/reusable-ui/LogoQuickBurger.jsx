@@ -5,7 +5,7 @@ function LogoQuickBurger({ className, onClick }) {
   return (
     <LogoStyled className={className} onClick={onClick}>
       <h1>QUICK</h1>
-      <img src="/assets/logo-orange.png" alt="" />
+      <img src="/images/logo-orange.png" alt="" />
       <h1>BURGER</h1>
     </LogoStyled>
   )
