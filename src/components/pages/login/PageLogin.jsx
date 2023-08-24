@@ -7,7 +7,7 @@ function PageLogin() {
 
   return (
     <PageLoginStyled >
-      <LogoQuickBurger/>
+      <LogoQuickBurger className={"login-login-page"}/>
       <LoginForm/>
     </PageLoginStyled>
   );
@@ -35,6 +35,10 @@ const PageLoginStyled = styled.div`
     right: 0;
     bottom: 0;
     z-index: -1;
+  }
+
+  .login-login-page {
+    //transform: scale(2.5);
   }
 `
 
