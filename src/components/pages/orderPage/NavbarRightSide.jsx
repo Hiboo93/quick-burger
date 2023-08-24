@@ -1,20 +1,28 @@
 import { styled } from 'styled-components';
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
+import Profile from './Profile.jsx';
 
 function NavbarRightSide({ username }) {
   return (
     <NavbarRightSideStyled className='right-side'>
-    Right
-        <h1>Bonjour {username} </h1>
-        <Link to="/login">
-            <button>Déconnexion</button>
-        </Link>
+      {/* <div className="admin-button">Admin Button</div> */}
+        <Profile/>
     </NavbarRightSideStyled>
   )
 }
 
 const NavbarRightSideStyled = styled.div`
-        background: purple;
+        display: flex;
+        align-items: center;
+        padding-right: 50px;
+
+        /* .admin-button {
+          background: lightblue;
+        } */
+
+        .profile {
+          background: yellow;
+        }
 `;
 
 export default NavbarRightSide
