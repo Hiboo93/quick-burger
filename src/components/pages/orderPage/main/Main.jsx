@@ -1,12 +1,13 @@
 import React from "react";
 import { styled } from "styled-components";
 import { theme } from "../../../../theme/index.js";
+import Menu from "./Menu.jsx";
 
 function Main() {
   return (
     <MainStyled className="main">
       <div className="basket">Basket</div>
-      <div className="menu">Menu</div>
+      <Menu />
     </MainStyled>
   );
 }
@@ -26,9 +27,7 @@ const MainStyled = styled.div`
     background: pink;
   }
 
-  .menu {
-    background: purple;
-  }
+  
 `;
 
 export default Main;
