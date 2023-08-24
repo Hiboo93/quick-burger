@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { styled } from "styled-components";
 import Navbar from "./Navbar.jsx";
 import Main from "./main.jsx";
+import { theme } from "../../../theme/index.js";
 
 
 
@@ -32,6 +33,7 @@ const OrderPageStyled = styled.div`
     width: 1400px;
     display: flex;
     flex-direction: column;
+    border-radius: ${theme.borderRadius.extraRound};
   }
 `;
 
