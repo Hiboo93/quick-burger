@@ -38,7 +38,7 @@ function NavbarRightSide({ username }) {
       <ToggleButton 
       labelIfUnchecked='ACTIVER LE MODE ADMIN' 
       labelIfChecked='DÉSACTIVER LE MODE ADMIN'
-      isChecked={isChecked}
+      //isChecked={isChecked}
       onToggle={displayToastNotification}
       className="toggle-button"
       />
@@ -71,9 +71,9 @@ const NavbarRightSideStyled = styled.div`
     }
   }
 
-  .toogle-button {
+  /* .toogle-button {
     border: 1px solid;
-  }
+  } */
 `;
 
 export default NavbarRightSide
