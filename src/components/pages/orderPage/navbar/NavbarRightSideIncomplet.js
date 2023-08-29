@@ -1,4 +1,4 @@
-import React from "react"
+
 import "react-toastify/dist/ReactToastify.css"
 import { theme } from "../../../../theme"
 import { ToastContainer } from "react-toastify"
