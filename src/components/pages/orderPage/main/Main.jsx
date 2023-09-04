@@ -7,7 +7,7 @@ import OrderContext from "../../../../context/OrderContext.jsx";
 
 
 function Main() {
-  const { isModeAdmin, setisModeAdmin} = useContext(OrderContext)
+  const { isModeAdmin } = useContext(OrderContext)
 
   return (
     <MainStyled className="main">

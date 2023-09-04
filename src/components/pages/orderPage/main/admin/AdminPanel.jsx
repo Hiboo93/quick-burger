@@ -4,13 +4,13 @@ import { theme } from '../../../../../theme/index.js';
 
 export default function AdminPanel() {
   return (
-    <AdminPanelStyled>AdminPanel</AdminPanelStyled>
+    <AdminPanelStyled></AdminPanelStyled>
   )
 }
 
 const AdminPanelStyled = styled.div`
   //border: 1px solid blue;
-  height: 250px;
+    height: 250px;
     border: 1px solid ${theme.colors.greyLight};
     background: ${theme.colors.white};
     box-shadow: ${theme.shadows.sublte};
