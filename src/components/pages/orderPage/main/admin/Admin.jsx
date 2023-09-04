@@ -1,23 +1,26 @@
 import React from 'react'
 import { styled } from 'styled-components'
-import { theme } from '../../../../../theme/index.js';
+//import { theme } from '../../../../../theme/index.js';
+import AdminTabs from './AdminTabs.jsx';
+import AdminPanel from './AdminPanel.jsx';
 
 export default function Admin() {
   return (
-    <AdminStyled>Admin</AdminStyled>
+    <AdminStyled>
+        <AdminTabs/>
+        <AdminPanel/>
+    </AdminStyled>
   )
 }
 
 const AdminStyled = styled.div`
     //background: red;
-    height: 250px;
+    
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    border: 1px solid ${theme.colors.greyLight};
-    background: ${theme.colors.white};
-    box-shadow: ${theme.shadows.sublte};
+    
 `;
 
 
