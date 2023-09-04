@@ -4,14 +4,14 @@ import LogoQuickBurger from "../../../reusable-ui/LogoQuickBurger.jsx";
 import { refreshPage } from "../../../../utils/window.js";
 import { theme } from "../../../../theme/index.js";
 
-function Navbar({ username }) {
+function Navbar() {
   return (
     <NavbarStyled>
       <LogoQuickBurger
         className="logo-order-page"
         onClick={() => refreshPage()}
       />
-      <NavbarRightSide username={username} />
+      <NavbarRightSide />
     </NavbarStyled>
   );
 }
