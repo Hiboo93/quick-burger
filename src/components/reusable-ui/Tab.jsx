@@ -2,12 +2,13 @@ import React from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../theme/index.js';
 
-export default function Tab({ Icon, onClick, className }) {
+export default function Tab({ Icon, onClick, className, label }) {
   return (
     <TabStyled onClick={onClick} className={className}>
-        <div className='icon'>{Icon}</div>
+      <div className="icon">{Icon}</div>
+      {label && <span className='label'>{label}</span>}
     </TabStyled>
-  )
+  );
 }
 
 const TabStyled = styled.button`
@@ -31,20 +32,23 @@ const TabStyled = styled.button`
   background: ${theme.colors.white};
   box-shadow: ${theme.shadows.sublte};
 
-border-width: 1px 1px 2px 1px;
-border-style: solid;
-border-color: ${theme.colors.greyLight};
+  border-width: 1px 1px 2px 1px;
+  border-style: solid;
+  border-color: ${theme.colors.greyLight};
 
+  border-radius: ${theme.borderRadius.round};
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
 
-border-radius: ${theme.borderRadius.round};
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 0px;
+  :hover {
+    border-bottom: 2px solid ${theme.colors.white};
+  }
 
-:hover {
-    border-bottom: 2px solid ${theme.colors.white}
-}
-
-.icon {
+  .icon {
     display: flex;
-}
-`
+  }
+
+  .label {
+    margin-left: 13px;
+  }
+`;
