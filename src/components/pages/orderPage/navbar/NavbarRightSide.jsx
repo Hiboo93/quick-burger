@@ -9,7 +9,7 @@ import { theme } from '../../../../theme/index.js';
 import OrderContext from '../../../../context/OrderContext.jsx';
 
 
-function NavbarRightSide() {
+function NavbarRightSide({ username }) {
   const { isModeAdmin, setisModeAdmin} = useContext(OrderContext)
 
   const displayToastNotification = () => {
@@ -38,7 +38,7 @@ function NavbarRightSide() {
       onToggle={displayToastNotification}
       className="toggle-button"
       />
-        <Profile />
+        <Profile username={username}/>
         <ToastContainer className="toaster" bodyClassName="body-toast"/>
     </NavbarRightSideStyled>
   )
