@@ -12,6 +12,7 @@ function OrderPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isAddSelected, setIsAddSelected] = useState(true);
   const [isEditSelected, setIsEditSelected] = useState(false);
+  const [currentTabSelected, setCurrentTabSelected] = useState("add")
 
   
   const orderContextValue = {
@@ -22,7 +23,9 @@ function OrderPage() {
     isAddSelected: isAddSelected,
     setIsAddSelected: setIsAddSelected,
     isEditSelected: isEditSelected,
-    setIsEditSelected: setIsEditSelected
+    setIsEditSelected: setIsEditSelected,
+    currentTabSelected: currentTabSelected,
+    setCurrentTabSelected: setCurrentTabSelected
   }
 
   return (
