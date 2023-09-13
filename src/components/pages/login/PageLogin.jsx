@@ -7,7 +7,7 @@ function PageLogin() {
 
   return (
     <PageLoginStyled >
-      <LogoQuickBurger/>
+      <LogoQuickBurger className={"login-login-page"}/>
       <LoginForm/>
     </PageLoginStyled>
   );
@@ -24,7 +24,7 @@ const PageLoginStyled = styled.div`
   
   ::before {
     content: "";
-    background: url("/assets/burger-background.jpg") rgba(0, 0, 0, 0.7);
+    background: url("/images/burger-background.jpg") rgba(0, 0, 0, 0.7);
     background-size: cover;
     background-position: center;
     background-blend-mode: darken;
@@ -35,6 +35,10 @@ const PageLoginStyled = styled.div`
     right: 0;
     bottom: 0;
     z-index: -1;
+  }
+
+  .login-login-page {
+    //transform: scale(2.5);
   }
 `
 
