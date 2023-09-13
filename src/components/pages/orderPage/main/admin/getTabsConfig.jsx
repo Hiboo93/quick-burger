@@ -1,13 +1,6 @@
 
 
-export const getTabsConfig = (currentTabSelected) => [
-    // {
-    //   index: "chevronUpDown",
-    //   label: "",
-    //   Icon: isCollapsed ? <FiChevronUp /> : <FiChevronDown />,
-    //   onClick: () => setIsCollapsed(!isCollapsed),
-    //   className: isCollapsed ? "is-active" : ""
-    // },
+export const getTabsConfig = () => [
     {
       index: "add",
       label: "Ajouter un produit",

@@ -6,12 +6,11 @@ import { getTabsConfig } from './getTabsConfig.jsx';
 
 export default function AdminPanel() {
   const {
-    isAddSelected,
-    isEditSelected,
     currentTabSelected
   } = useContext(OrderContext)
 
   //const tabs = getTabsConfig(currentTabSelected)
+  //const tabSelected = getTabSelected(tabs, currentTabSelected)
 
   return (
     <AdminPanelStyled>
