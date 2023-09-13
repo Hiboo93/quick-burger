@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../../../../theme/index.js';
 import OrderContext from '../../../../../context/OrderContext.jsx';
-import { getTabsConfig } from './getTabsConfig.jsx';
+//import { tabsConfig } from './getTabsConfig.jsx';
 
 export default function AdminPanel() {
   const {

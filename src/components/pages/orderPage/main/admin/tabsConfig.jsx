@@ -1,6 +1,6 @@
 
 
-export const getTabsConfig = () => [
+export const tabsConfig = [
     {
       index: "add",
       label: "Ajouter un produit",
