@@ -22,7 +22,7 @@ export default function AdminTabs() {
     setCurrentTabSelected(tabSelected); //reactualise l'onglet selectionné
   };
 
-  const tabs = getTabsConfig(currentTabSelected)
+  const tabs = getTabsConfig(currentTabSelected);
 
   return (
     <AdminTabsStyled>
@@ -38,7 +38,7 @@ export default function AdminTabs() {
             Icon={tab.Icon}
             //onClick={tab.onClick}
             onClick={() => selectTab(tab.index)}
-            className={tab.className}
+            className={currentTabSelected === tab.index ? "is-active" : ""}
           />
         );
       })}
