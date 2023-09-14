@@ -4,10 +4,10 @@ import Navbar from "./navbar/Navbar.jsx";
 import Main from "./main/Main.jsx";
 import { useState } from "react";
 import OrderContext from "../../../context/OrderContext.jsx";
-import { useParams } from "react-router-dom";
+//import { useParams } from "react-router-dom";
 
 function OrderPage() {
-  const { username } = useParams()
+  //const { username } = useParams()
   const [isModeAdmin, setisModeAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isAddSelected, setIsAddSelected] = useState(true);
@@ -32,7 +32,7 @@ function OrderPage() {
     <OrderContext.Provider value={orderContextValue}>
       <OrderPageStyled>
         <div className="container">
-          <Navbar username={username}/>
+          <Navbar />
           <Main />
         </div>
       </OrderPageStyled>
