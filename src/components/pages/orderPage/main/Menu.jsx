@@ -6,6 +6,8 @@ import { formatPrice } from "../../../../utils/maths.js";
 import Card from "../../../reusable-ui/Card.jsx";
 import OrderContext from "../../../../context/OrderContext.jsx";
 
+const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
+
 export default function Menu() {
   //const [menu, setMenu] = useState(fakeMenu.MEDIUM);
   const { menu } = useContext(OrderContext)
@@ -17,7 +19,7 @@ export default function Menu() {
           <Card
             key={produit.id}
             title={produit.title}
-            imageSource={produit.imageSource}
+            imageSource={produit.imageSource ? produit.imageSource : IMAGE_BY_DEFAULT}
             leftDescription={formatPrice(produit.price)}
           />
         );
