@@ -1,3 +1,5 @@
+import AddForm from "./adminPanel/AddForm.jsx";
+import EditForm from "./adminPanel/EditForm.jsx";
 
 
 export const tabsConfig = [
@@ -5,16 +7,14 @@ export const tabsConfig = [
       index: "add",
       label: "Ajouter un produit",
       Icon: "",
-      //onClick: () => selectTab("add"),
-      //className: currentTabSelected === "add" ? "is-active" : "",
+      Content: <AddForm />
     },
     {
       index: "edit",
       label: "Modifier un produit",
       Icon: "",
-      //onClick: () => selectTab("edit"),
-      //className: currentTabSelected === "edit" ? "is-active" : "",
+      Content: <EditForm />
     },
   ];
 
- 
+ export const getTabSelected = (tabs, currentTabSelected) => tabs.find((tab) => tab.index === currentTabSelected)
