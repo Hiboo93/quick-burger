@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react'
 import styled from 'styled-components';
 import OrderContext from '../../../../../../context/OrderContext.jsx';
+import { FiCheck } from 'react-icons/fi';
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -12,6 +13,7 @@ const EMPTY_PRODUCT = {
 export default function AddForm() {
   const { handleAdd } = useContext(OrderContext);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const [isSubmited, setIsSubmited] = useState(false);
   //   const [title, setTitle] = useState("");
   //   const [imageSource, setImageSource] = useState("");
   //   const [price, setPrice] = useState(0);
@@ -19,20 +21,27 @@ export default function AddForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    //id: new Date().getTime(),
-
     const newProductToAdd = {
       ...newProduct,
-      id: crypto.randomUUID(),
+      id: crypto.randomUUID(), //id: new Date().getTime(),
     };
     handleAdd(newProductToAdd);
-    setNewProduct(EMPTY_PRODUCT)
+    setNewProduct(EMPTY_PRODUCT);
+
+    displaySuccessMessage();
   };
 
   const handleChange = (event) => {
     const newValue = event.target.value;
     const name = event.target.name;
     setNewProduct({ ...newProduct, [name]: newValue });
+  };
+
+  const displaySuccessMessage = () => {
+    setIsSubmited(true);
+    setTimeout(() => {
+      setIsSubmited(false);
+    }, 2000);
   };
 
   return (
@@ -67,7 +76,15 @@ export default function AddForm() {
           placeholder="Prix"
         />
       </div>
-      <button className="submit-button">Submit button</button>
+      <div className="submit">
+        <button className="submit-button">Submit button</button>
+        {isSubmited && (
+          <div className="submit-message">
+            <FiCheck />
+            <span>Ajouté avec succès</span>
+          </div>
+        )}
+      </div>
     </AddFormStyled>
   );
 }
@@ -88,21 +105,31 @@ const AddFormStyled = styled.form`
     align-items: center;
 
     img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        object-position: center;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
     }
   }
+
   .input-fields {
     background: blue;
     grid-area: 1 / 2 / -2 / 3;
 
     display: grid;
   }
-  .submit-button {
-    background: green;
+
+  .submit {
     grid-area: 4 / -2 / -1 / -1;
-    width: 50%;
+    display: flex;
+    align-items: center;
+
+    .submit-button {
+      width: 50%;
+    }
+
+    .submit-message {
+      border: 1px solid red;
+    }
   }
 `;
