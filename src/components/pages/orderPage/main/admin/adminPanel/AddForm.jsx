@@ -2,48 +2,68 @@ import { useContext, useState } from 'react'
 import styled from 'styled-components';
 import OrderContext from '../../../../../../context/OrderContext.jsx';
 
+const EMPTY_PRODUCT = {
+    id: "",
+    title: "kebab",
+    imageSource: "",
+    price: 14
+}
 
 export default function AddForm() {
-    const { handleAdd } = useContext(OrderContext)
+  const { handleAdd } = useContext(OrderContext);
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+//   const [title, setTitle] = useState("");
+//   const [imageSource, setImageSource] = useState("");
+//   const [price, setPrice] = useState(0);
+  
 
-    const [title, setTitle] = useState("")
-    const [imageSource, setImageSource] = useState("")
-    const [price, setPrice] = useState(0)
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
+    //id: new Date().getTime(),
+    
+    const newProductToAdd = {
+        ...newProduct,
+        id: crypto.randomUUID()
+    };
+    handleAdd(newProductToAdd);
+  };
 
-        const newProduct = {
-            id : new Date().getTime(),
-            title : "Nouveau produit",
-            imageSource : "https://omalo.fr/site/wp-content/uploads/2021/03/Tacos-Malo_O-malo-1-1-600x600.png",
-            price : 2.5
-          }
-
-        handleAdd(newProduct)
-    }
-
-    const handleTitleChange = (e) => {
-        setTitle(e.target.value)
-    }
-    const handleImageSource = (e) => {
-        setImageSource(e.target.value)
-    }
-    const handlePrice = (e) => {
-        setPrice(e.target.value)
-    }
+  const handleChange = (event) => {
+    const newValue = event.target.value;
+    const name = event.target.name
+    setNewProduct({ ...newProduct, [name]: newValue });
+  };
 
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-        <div className="image-preview">ImagePreview</div>
-        <div className="input-fields">
-            <input onChange={handleTitleChange} value={title} type='text' placeholder='Nom du produit' />
-            <input onChange={handleImageSource} value={imageSource} type='text' placeholder='Image URL' />
-            <input onChange={handlePrice} value={price ? price : ""} type='text' placeholder='Prix' />
-        </div>
-        <button className="submit-button">Submit button</button>
+      <div className="image-preview">ImagePreview</div>
+      <div className="input-fields">
+        <input
+          name="title"
+          onChange={handleChange}
+          value={newProduct.title}
+          type="text"
+          placeholder="Nom du produit"
+        />
+        <input
+          name="imageSource"
+          onChange={handleChange}
+          value={newProduct.imageSource}
+          type="text"
+          placeholder="Image URL"
+        />
+        <input
+          name="price"
+          onChange={handleChange}
+          value={newProduct.price ? newProduct.price : ""}
+          type="text"
+          placeholder="Prix"
+        />
+      </div>
+      <button className="submit-button">Submit button</button>
     </AddFormStyled>
-  )
+  );
 }
 
 const AddFormStyled = styled.form`
