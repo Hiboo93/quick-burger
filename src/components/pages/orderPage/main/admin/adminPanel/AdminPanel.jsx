@@ -13,23 +13,19 @@ export default function AdminPanel() {
   const tabSelected = getTabSelected(tabs, currentTabSelected)
 
   return (
-    <AdminPanelStyled>
-      <p>{tabSelected && tabSelected.Content}</p>
-    </AdminPanelStyled>
+    <AdminPanelStyled>{tabSelected && tabSelected.Content}</AdminPanelStyled>
   );
 }
 
 const AdminPanelStyled = styled.div`
   //border: 1px solid blue;
-  height: 251px;
+  height: 250px;
   background: ${theme.colors.white};
   border-top: 1px solid ${theme.colors.greyLight};
   box-shadow: ${theme.shadows.sublte};
+  padding: 30px 5%;
 
   /* border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound}; */
 
-  p {
-    padding: 0 20px;
-  }
 `;

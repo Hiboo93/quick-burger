@@ -4,28 +4,40 @@ import Navbar from "./navbar/Navbar.jsx";
 import Main from "./main/Main.jsx";
 import { useState } from "react";
 import OrderContext from "../../../context/OrderContext.jsx";
+import { fakeMenu } from "../../../fakeData/fakeMenu.js";
 //import { useParams } from "react-router-dom";
 
 function OrderPage() {
   //const { username } = useParams()
   const [isModeAdmin, setisModeAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [isAddSelected, setIsAddSelected] = useState(true);
-  const [isEditSelected, setIsEditSelected] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
+  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+  // const [isAddSelected, setIsAddSelected] = useState(true);
+  // const [isEditSelected, setIsEditSelected] = useState(false);
 
-  
+
+  const handleAdd = (newProduct) => {
+    const menuCopy = [...menu]
+    const menuUpdated = [newProduct, ...menuCopy]
+    setMenu(menuUpdated)
+  }
+
   const orderContextValue = {
     isModeAdmin: isModeAdmin,
     setisModeAdmin: setisModeAdmin,
     isCollapsed: isCollapsed,
     setIsCollapsed: setIsCollapsed,
-    isAddSelected: isAddSelected,
-    setIsAddSelected: setIsAddSelected,
-    isEditSelected: isEditSelected,
-    setIsEditSelected: setIsEditSelected,
     currentTabSelected: currentTabSelected,
-    setCurrentTabSelected: setCurrentTabSelected
+    setCurrentTabSelected: setCurrentTabSelected,
+    menu: menu,
+    setMenu: setMenu,
+    handleAdd: handleAdd
+
+    // isAddSelected: isAddSelected,
+    // setIsAddSelected: setIsAddSelected,
+    // isEditSelected: isEditSelected,
+    // setIsEditSelected: setIsEditSelected,
   }
 
   return (
