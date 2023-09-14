@@ -3,41 +3,46 @@ import styled from 'styled-components';
 import OrderContext from '../../../../../../context/OrderContext.jsx';
 
 const EMPTY_PRODUCT = {
-    id: "",
-    title: "",
-    imageSource: "",
-    price: 0
-}
+  id: "",
+  title: "",
+  imageSource: "",
+  price: 0,
+};
 
 export default function AddForm() {
   const { handleAdd } = useContext(OrderContext);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
-//   const [title, setTitle] = useState("");
-//   const [imageSource, setImageSource] = useState("");
-//   const [price, setPrice] = useState(0);
-  
+  //   const [title, setTitle] = useState("");
+  //   const [imageSource, setImageSource] = useState("");
+  //   const [price, setPrice] = useState(0);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     //id: new Date().getTime(),
-    
+
     const newProductToAdd = {
-        ...newProduct,
-        id: crypto.randomUUID()
+      ...newProduct,
+      id: crypto.randomUUID(),
     };
     handleAdd(newProductToAdd);
   };
 
   const handleChange = (event) => {
     const newValue = event.target.value;
-    const name = event.target.name
+    const name = event.target.name;
     setNewProduct({ ...newProduct, [name]: newValue });
   };
 
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-      <div className="image-preview">ImagePreview</div>
+      <div className="image-preview">
+        {newProduct.imageSource ? (
+          <img src={newProduct.imageSource} alt={newProduct.title} />
+        ) : (
+          <div>Aucune Image</div>
+        )}
+      </div>
       <div className="input-fields">
         <input
           name="title"
@@ -76,8 +81,17 @@ const AddFormStyled = styled.form`
   width: 70%;
 
   .image-preview {
-    background: red;
     grid-area: 1 / 1 / 4 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
   }
   .input-fields {
     background: blue;
