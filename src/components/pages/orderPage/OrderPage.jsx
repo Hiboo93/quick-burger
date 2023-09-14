@@ -31,7 +31,6 @@ function OrderPage() {
     currentTabSelected: currentTabSelected,
     setCurrentTabSelected: setCurrentTabSelected,
     menu: menu,
-    setMenu: setMenu,
     handleAdd: handleAdd
 
     // isAddSelected: isAddSelected,

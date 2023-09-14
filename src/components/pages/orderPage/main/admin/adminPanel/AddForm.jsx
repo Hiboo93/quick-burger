@@ -1,30 +1,45 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import styled from 'styled-components';
 import OrderContext from '../../../../../../context/OrderContext.jsx';
 
-export default function AddForm() {
 
+export default function AddForm() {
     const { handleAdd } = useContext(OrderContext)
 
-    const newProduct = {
-        id : new Date().getTime(),
-        title : "Nouveau produit",
-        imageSource : "https://omalo.fr/site/wp-content/uploads/2021/03/Tacos-Malo_O-malo-1-1-600x600.png",
-        price : 2.5
-      }
+    const [title, setTitle] = useState("")
+    const [imageSource, setImageSource] = useState("")
+    const [price, setPrice] = useState(0)
 
     const handleSubmit = (event) => {
         event.preventDefault()
+
+        const newProduct = {
+            id : new Date().getTime(),
+            title : "Nouveau produit",
+            imageSource : "https://omalo.fr/site/wp-content/uploads/2021/03/Tacos-Malo_O-malo-1-1-600x600.png",
+            price : 2.5
+          }
+
         handleAdd(newProduct)
+    }
+
+    const handleTitleChange = (e) => {
+        setTitle(e.target.value)
+    }
+    const handleImageSource = (e) => {
+        setImageSource(e.target.value)
+    }
+    const handlePrice = (e) => {
+        setPrice(e.target.value)
     }
 
   return (
     <AddFormStyled onSubmit={handleSubmit}>
         <div className="image-preview">ImagePreview</div>
         <div className="input-fields">
-            <input type='text' placeholder='Nom du produit' />
-            <input type='text' placeholder='Image URL' />
-            <input type='text' placeholder='Prix' />
+            <input onChange={handleTitleChange} value={title} type='text' placeholder='Nom du produit' />
+            <input onChange={handleImageSource} value={imageSource} type='text' placeholder='Image URL' />
+            <input onChange={handlePrice} value={price ? price : ""} type='text' placeholder='Prix' />
         </div>
         <button className="submit-button">Submit button</button>
     </AddFormStyled>
