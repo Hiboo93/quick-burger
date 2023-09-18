@@ -12,6 +12,7 @@ export default createContext({
 
     menu: [],
     handleAdd: () => {},
+    handleDelete: () => {}
 
     // isAddSelected: false,
     // setIsAddSelected: () => {},
