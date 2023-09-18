@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { styled } from "styled-components";
-import { theme } from "../../../../../../theme/index.js";
-import OrderContext from "../../../../../../context/OrderContext.jsx";
+import { theme } from "../../../../../../../theme/index.js";
+import OrderContext from "../../../../../../../context/OrderContext.jsx";
 //import { tabsConfig, getTabSelected } from './tabsConfig.jsx';
 //import { tabsConfig, getTabSelected } from "./tabsConfig.jsx";
 import { tabsConfig, getTabSelected } from "../tabsConfig"
