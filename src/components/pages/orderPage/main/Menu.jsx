@@ -10,7 +10,7 @@ const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
   //const [menu, setMenu] = useState(fakeMenu.MEDIUM);
-  const { menu } = useContext(OrderContext)
+  const { menu, isModeAdmin } = useContext(OrderContext)
 
   return (
     <MenuStyled className="menu">
@@ -21,6 +21,7 @@ export default function Menu() {
             title={produit.title}
             imageSource={produit.imageSource ? produit.imageSource : IMAGE_BY_DEFAULT}
             leftDescription={formatPrice(produit.price)}
+            hasDeletButton={isModeAdmin}
           />
         );
       })}
