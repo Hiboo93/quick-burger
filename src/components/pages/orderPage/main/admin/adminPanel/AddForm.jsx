@@ -41,7 +41,7 @@ export default function AddForm() {
     setIsSubmited(true);
     setTimeout(() => {
       setIsSubmited(false);
-    }, 2000);
+    }, 3000);
   };
 
   return (
