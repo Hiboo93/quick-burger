@@ -5,12 +5,22 @@ import { theme } from "../../../../theme/index.js";
 import { formatPrice } from "../../../../utils/maths.js";
 import Card from "../../../reusable-ui/Card.jsx";
 import OrderContext from "../../../../context/OrderContext.jsx";
+//import { fakeMenu } from "../../../../fakeData/fakeMenu.js";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
   //const [menu, setMenu] = useState(fakeMenu.MEDIUM);
-  const { menu, isModeAdmin, handleDelete } = useContext(OrderContext)
+  const { menu, isModeAdmin, handleDelete, resetMenu } =
+    useContext(OrderContext);
+
+  if (menu.length === 0)
+    return (
+      <div>
+        <span>Pas de produit</span>
+        <button onClick={resetMenu}>Générer de nouveaux produits</button>
+      </div>
+    );
 
   return (
     <MenuStyled className="menu">
@@ -19,7 +29,9 @@ export default function Menu() {
           <Card
             key={produit.id}
             title={produit.title}
-            imageSource={produit.imageSource ? produit.imageSource : IMAGE_BY_DEFAULT}
+            imageSource={
+              produit.imageSource ? produit.imageSource : IMAGE_BY_DEFAULT
+            }
             leftDescription={formatPrice(produit.price)}
             hasDeletButton={isModeAdmin}
             onDelete={() => handleDelete(produit.id)}
