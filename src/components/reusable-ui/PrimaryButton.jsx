@@ -1,14 +1,13 @@
-import React from 'react'
 import styled from "styled-components"
 
 import { Link } from "react-router-dom";
 import { theme } from '../../theme/index.js';
 
-function PrimaryButton({ Icon, name, label }) {
+function PrimaryButton({ Icon, name, label, className, version="normal" }) {
   return (
     <div>
       <Link to={`/order/${name}`}>
-          <PrimaryButtonStyled>
+          <PrimaryButtonStyled >
             <span>{label}</span>
             <div className='icon'>{Icon && Icon}</div>
           </PrimaryButtonStyled>
@@ -18,6 +17,8 @@ function PrimaryButton({ Icon, name, label }) {
 }
 
 const PrimaryButtonStyled = styled.button`
+
+
   width: 100%;
   border: 1px solid red;
   display: inline-flex;

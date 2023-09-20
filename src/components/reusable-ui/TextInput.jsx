@@ -19,22 +19,12 @@ function TextInput({
 }
 
 const TextInputStyled = styled.div`
-  //border: 1px solid yellow;
-  //background-color: ${theme.colors.white};
-  // ${(props) => props.version === "normal" && extraStyleNormal};
-  // ${(props) => props.version === "minimalist" && extraStyleMinimalist};
-
   border-radius: ${theme.borderRadius.round};
   display: flex;
   align-items: center;
   //padding: 18px 24px;
 
   .icon {
-    //color: red;
-    /* justify-content: center;
-    align-items: center;
-    color: ${theme.colors.greySemiDark}; */
-    //margin: 0 8px 0 10px;
     font-size: ${theme.fonts.size.SM};
     margin: 0 13px 0 8px;
     display: flex;
