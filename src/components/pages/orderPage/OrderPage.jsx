@@ -10,7 +10,7 @@ import { fakeMenu } from "../../../fakeData/fakeMenu.js";
 function OrderPage() {
   //const { username } = useParams()
   const [isModeAdmin, setisModeAdmin] = useState(false)
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [menu, setMenu] = useState(fakeMenu.EMPTY);
   // const [isAddSelected, setIsAddSelected] = useState(true);
@@ -66,7 +66,7 @@ function OrderPage() {
 }
 
 const OrderPageStyled = styled.div`
-  background: orange;
+  background: ${theme.colors.primary};
   height: 100vh;
   display: flex;
   justify-content: center;

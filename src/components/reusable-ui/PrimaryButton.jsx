@@ -2,6 +2,7 @@ import React from 'react'
 import styled from "styled-components"
 
 import { Link } from "react-router-dom";
+import { theme } from '../../theme/index.js';
 
 function PrimaryButton({ Icon, name, label }) {
   return (
@@ -9,7 +10,7 @@ function PrimaryButton({ Icon, name, label }) {
       <Link to={`/order/${name}`}>
           <PrimaryButtonStyled>
             <span>{label}</span>
-            {Icon && Icon}
+            <div className='icon'>{Icon && Icon}</div>
           </PrimaryButtonStyled>
         </Link>
     </div>
@@ -35,7 +36,46 @@ const PrimaryButtonStyled = styled.button`
   background-color: #ff9f1b;
   border: 1px solid #ff9f1b;
 
-  &:hover:not(:disabled) {
+  :hover {
+    color: ${theme.colors.primary};
+    background-color: ${theme.colors.white};
+    border: 1px solid ${theme.colors.primary};
+    transition: all 200ms ease-out;
+  }
+  :active {
+    background-color: ${theme.colors.primary};
+    color: ${theme.colors.white};
+  }
+
+  &.is-disabled {
+    opacity: 50%;
+    cursor: not-allowed;
+    z-index: 2;
+  }
+
+  &.with-focus {
+    border: 1px solid white;
+    background-color: ${theme.colors.white};
+    color: ${theme.colors.primary};
+    :hover {
+      color: ${theme.colors.primary};
+      background-color: ${theme.colors.primary};
+      border: 1px solid ${theme.colors.white};
+    }
+    :active {
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+    }
+  }
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+  }
+
+  /* &:hover:not(:disabled) {
     background-color: white;
     color: #ff9f1b;
     border: 1px solid #ff9f1b;
@@ -50,8 +90,8 @@ const PrimaryButtonStyled = styled.button`
 
   &:disabled {
     opacity: 0.6;
-    cursor: not-allowed;
-  }
+    cursor: not-allowed; 
+  }*/
 `
 
 export default PrimaryButton
