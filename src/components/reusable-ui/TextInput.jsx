@@ -3,10 +3,10 @@ import { theme } from "../../theme/index.js"
 
 
 function TextInput({
-  value,
   onChange,
   Icon,
   className,
+  value,
   version = "normal",
   ...extraProps
 }) {
@@ -34,7 +34,6 @@ const TextInputStyled = styled.div`
     //background: blue;
     border: none;
     font-size: ${theme.fonts.size.SM};
-    //color: ${theme.colors.dark};
     width: 100%;
 
     &::placeholder {
