@@ -5,6 +5,7 @@ import Main from "./main/Main.jsx";
 import { useState } from "react";
 import OrderContext from "../../../context/OrderContext.jsx";
 import { fakeMenu } from "../../../fakeData/fakeMenu.js";
+import { EMPTY_PRODUCT } from "./main/mainRightSide/admin/adminPanel/AddForm.jsx";
 //import { useParams } from "react-router-dom";
 
 function OrderPage() {
@@ -12,9 +13,8 @@ function OrderPage() {
   const [isModeAdmin, setisModeAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
-  const [menu, setMenu] = useState(fakeMenu.EMPTY);
-  // const [isAddSelected, setIsAddSelected] = useState(true);
-  // const [isEditSelected, setIsEditSelected] = useState(false);
+  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 
 
   const handleAdd = (newProduct) => {
@@ -45,7 +45,9 @@ function OrderPage() {
     menu: menu,
     handleAdd: handleAdd,
     handleDelete: handleDelete,
-    resetMenu: resetMenu
+    resetMenu: resetMenu,
+    newProduct: newProduct, 
+    setNewProduct: setNewProduct
 
     // isAddSelected: isAddSelected,
     // setIsAddSelected: setIsAddSelected,

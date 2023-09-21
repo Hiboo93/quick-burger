@@ -38,9 +38,9 @@ align-items: center;
   margin-top: 20px;
 }
 
-/* button {
+button {
   margin-top: 30px;
   font-size: ${theme.fonts.size.XS};
   width: auto;
-} */
+}
 `

@@ -11,7 +11,7 @@ import Button from '../../../../../../reusable-ui/Button.jsx';
 //import PrimaryButton from '../../../../../../reusable-ui/PrimaryButton.jsx';
 
 
-const EMPTY_PRODUCT = {
+export const EMPTY_PRODUCT = {
   id: "",
   title: "",
   imageSource: "",
@@ -19,12 +19,10 @@ const EMPTY_PRODUCT = {
 };
 
 export default function AddForm() {
-  const { handleAdd } = useContext(OrderContext);
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
+  //const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [isSubmited, setIsSubmited] = useState(false);
-  //   const [title, setTitle] = useState("");
-  //   const [imageSource, setImageSource] = useState("");
-  //   const [price, setPrice] = useState(0);
+ 
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -90,7 +88,6 @@ export default function AddForm() {
         />
       </div>
       <div className="submit">
-      {/* <button className='submit-button'>Submit button</button> */}
         <Button className="submit-button" label={"Ajouter Un nouveau produit au menu"} version="success"/>
         {isSubmited && (
           <div className="submit-message">
