@@ -1,14 +1,13 @@
 import { useContext, useState } from 'react'
 import styled from 'styled-components';
 import OrderContext from '../../../../../../../context/OrderContext.jsx';
-import { FiCheck } from 'react-icons/fi';
 import { FaHamburger } from 'react-icons/fa';
 import { BsFillCameraFill } from 'react-icons/bs';
 import { MdOutlineEuro } from 'react-icons/md';
-import { theme } from '../../../../../../../theme/index.js';
 import TextInput from '../../../../../../reusable-ui/TextInput.jsx';
 import Button from '../../../../../../reusable-ui/Button.jsx';
 import ImagePreview from './ImagePreview.jsx';
+import SubmitMessage from './SubmitMessage.jsx';
 //import PrimaryButton from '../../../../../../reusable-ui/PrimaryButton.jsx';
 
 
@@ -85,10 +84,7 @@ export default function AddForm() {
       <div className="submit">
         <Button className="submit-button" label={"Ajouter Un nouveau produit au menu"} version="success"/>
         {isSubmited && (
-          <div className="submit-message">
-            <FiCheck className='icon' />
-            <span className='message'>Ajouté avec succès</span>
-          </div>
+          <SubmitMessage/>
         )}
       </div>
     </AddFormStyled>
@@ -104,9 +100,6 @@ const AddFormStyled = styled.form`
   width: 70%;
   grid-column-gap: 20px;
   grid-row-gap: 8px;
-
-
-  
 
   .input-fields {
     //background: blue;
@@ -125,30 +118,6 @@ const AddFormStyled = styled.form`
 
     .submit-button {
       width: 100%;
-    }
-
-    .submit-message {
-      //border: 1px solid red;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-left: 5px;
-
-      .icon {
-        color: ${theme.colors.success};
-        margin-left: 10px;
-        width: 1em;
-        height: 1em;
-        border: 1px solid ${theme.success};
-        border-radius: 50%;
-        vertical-align: middle;
-      }
-
-      .message {
-        margin-left: 5px;
-        font-size: ${theme.fonts.size.SM};
-        color: ${theme.colors.success};
-      }
     }
   }
 `;
