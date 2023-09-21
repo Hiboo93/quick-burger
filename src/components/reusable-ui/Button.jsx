@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom'
 import { theme } from '../../theme/index.js'
 import styled, { css } from 'styled-components'
 
-export default function Button({ Icon, name, label, className, version = "normal"}) {
+export default function Button({ Icon, name, label, className, onClick, version = "normal"}) {
   return (
-        <ButtonStyled className={className} version={version}>
+        <ButtonStyled className={className} version={version} onClick={onClick}>
           <span>{label}</span>
           <div className="icon">{Icon && Icon}</div>
         </ButtonStyled>
