@@ -69,7 +69,7 @@ const LoginFormStyled = styled.form`
   }
 
  h1 {
-  color: white;
+  color: ${theme.colors.white};
   font-size: ${theme.fonts.size.P5};
  }
  

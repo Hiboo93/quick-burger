@@ -1,14 +1,15 @@
 import { useContext, useState } from 'react'
 import styled from 'styled-components';
 import OrderContext from '../../../../../../../context/OrderContext.jsx';
-//import OrderContext from '../../../../../../context/OrderContext.jsx';
 import { FiCheck } from 'react-icons/fi';
 import { FaHamburger } from 'react-icons/fa';
 import { BsFillCameraFill } from 'react-icons/bs';
 import { MdOutlineEuro } from 'react-icons/md';
 import { theme } from '../../../../../../../theme/index.js';
 import TextInput from '../../../../../../reusable-ui/TextInput.jsx';
-import PrimaryButton from '../../../../../../reusable-ui/PrimaryButton.jsx';
+import Button from '../../../../../../reusable-ui/Button.jsx';
+//import PrimaryButton from '../../../../../../reusable-ui/PrimaryButton.jsx';
+
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -27,7 +28,6 @@ export default function AddForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const newProductToAdd = {
       ...newProduct,
       id: crypto.randomUUID(), //id: new Date().getTime(),
@@ -52,7 +52,7 @@ export default function AddForm() {
   };
 
   return (
-    <AddFormStyled onSubmit={handleSubmit}>
+    <AddFormStyled action='submit' onSubmit={handleSubmit}>
       <div className="image-preview">
         {newProduct.imageSource ? (
           <img src={newProduct.imageSource} alt={newProduct.title} />
@@ -90,7 +90,8 @@ export default function AddForm() {
         />
       </div>
       <div className="submit">
-        <PrimaryButton className="submit-button" label={"Ajouter Un nouveau produit au menu"} version="success"/>
+      {/* <button className='submit-button'>Submit button</button> */}
+        <Button className="submit-button" label={"Ajouter Un nouveau produit au menu"} version="success"/>
         {isSubmited && (
           <div className="submit-message">
             <FiCheck />
@@ -153,7 +154,7 @@ const AddFormStyled = styled.form`
     align-items: center;
 
     .submit-button {
-      width: 50%;
+      width: 100%;
     }
 
     .submit-message {
