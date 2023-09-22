@@ -1,26 +1,26 @@
-import styled, { css } from "styled-components";
-import { Link } from "react-router-dom";
-import { theme } from "../../theme/index.js";
+import { theme } from '../../theme/index.js'
+import styled, { css } from 'styled-components'
 
-function PrimaryButton({ Icon, name, label, className, version = "normal" }) {
+export default function Button({
+  Icon,
+  name,
+  label,
+  className,
+  onClick,
+  version = "normal",
+}) {
   return (
-    <div>
-      <Link to={`/order/${name}`}>
-        <PrimaryButtonStyled className={className} version={version}>
-          <span>{label}</span>
-          <div className="icon">{Icon && Icon}</div>
-        </PrimaryButtonStyled>
-      </Link>
-    </div>
+    <ButtonStyled className={className} version={version} onClick={onClick}>
+      <span>{label}</span>
+      <div className="icon">{Icon && Icon}</div>
+    </ButtonStyled>
   );
 }
 
-const PrimaryButtonStyled = styled.button`
-  ${(props) => props.version === "normal" && extraStylePrimary};
-  ${(props) => props.version === "success" && extraStyleSuccess};
-
-  ${(props) => extraStyle[props.version]}
+const ButtonStyled = styled.button`
+${(props) => extraStyle[props.version]}
 `;
+
 const extraStylePrimary = css`
   width: 100%;
   border: 1px solid red;
@@ -104,5 +104,3 @@ const extraStyle = {
   primary: extraStylePrimary,
   success: extraStyleSuccess,
 };
-
-export default PrimaryButton;
