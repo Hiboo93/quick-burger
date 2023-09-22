@@ -2,8 +2,6 @@ import { useContext } from "react";
 import { styled } from "styled-components";
 import { theme } from "../../../../../../../theme/index.js";
 import OrderContext from "../../../../../../../context/OrderContext.jsx";
-//import { tabsConfig, getTabSelected } from './tabsConfig.jsx';
-//import { tabsConfig, getTabSelected } from "./tabsConfig.jsx";
 import { tabsConfig, getTabSelected } from "../tabsConfig"
 
 export default function AdminPanel() {
@@ -19,10 +17,11 @@ export default function AdminPanel() {
 
 const AdminPanelStyled = styled.div`
   //border: 1px solid blue;
-  height: 250px;
+  height: 240px;
   background: ${theme.colors.white};
   border-top: 1px solid ${theme.colors.greyLight};
   box-shadow: ${theme.shadows.sublte};
+  box-sizing: border-box;
   padding: 30px 5%;
 
   /* border-bottom-left-radius: ${theme.borderRadius.extraRound};

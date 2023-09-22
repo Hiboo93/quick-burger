@@ -48,11 +48,6 @@ function OrderPage() {
     resetMenu: resetMenu,
     newProduct: newProduct, 
     setNewProduct: setNewProduct
-
-    // isAddSelected: isAddSelected,
-    // setIsAddSelected: setIsAddSelected,
-    // isEditSelected: isEditSelected,
-    // setIsEditSelected: setIsEditSelected,
   }
 
   return (

@@ -1,21 +1,24 @@
-import { Link } from 'react-router-dom'
 import { theme } from '../../theme/index.js'
 import styled, { css } from 'styled-components'
 
-export default function Button({ Icon, name, label, className, onClick, version = "normal"}) {
+export default function Button({
+  Icon,
+  name,
+  label,
+  className,
+  onClick,
+  version = "normal",
+}) {
   return (
-        <ButtonStyled className={className} version={version} onClick={onClick}>
-          <span>{label}</span>
-          <div className="icon">{Icon && Icon}</div>
-        </ButtonStyled>
-  )
+    <ButtonStyled className={className} version={version} onClick={onClick}>
+      <span>{label}</span>
+      <div className="icon">{Icon && Icon}</div>
+    </ButtonStyled>
+  );
 }
 
 const ButtonStyled = styled.button`
-    ${(props) => props.version === "normal" && extraStylePrimary};
-    ${(props) => props.version === "success" && extraStyleSuccess};
-
-    ${(props) => extraStyle[props.version]}
+${(props) => extraStyle[props.version]}
 `;
 
 const extraStylePrimary = css`
@@ -37,18 +40,18 @@ const extraStylePrimary = css`
   background-color: #ff9f1b;
   border: 1px solid #ff9f1b;
 
-  &:hover:not(:disabled) {
+  :hover {
     color: ${theme.colors.primary};
     background-color: ${theme.colors.white};
     border: 1px solid ${theme.colors.primary};
     transition: all 200ms ease-out;
   }
-  &:active {
+  :active {
     background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
   }
 
-  &.disabled {
+  &.is-disabled {
     opacity: 50%;
     cursor: not-allowed;
     z-index: 2;
