@@ -1,7 +1,9 @@
-import React from 'react'
+import HintMessage from './HintMessage.jsx'
 
 export default function EditForm() {
   return (
-    <div>EditForm</div>
+    <div>
+      <HintMessage/>
+    </div>
   )
 }
