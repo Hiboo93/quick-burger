@@ -5,16 +5,18 @@ import Main from "./main/Main.jsx";
 import { useState } from "react";
 import OrderContext from "../../../context/OrderContext.jsx";
 import { fakeMenu } from "../../../fakeData/fakeMenu.js";
-import { EMPTY_PRODUCT } from "./main/mainRightSide/admin/adminPanel/AddForm.jsx";
+import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
+
 //import { useParams } from "react-router-dom";
 
 function OrderPage() {
   //const { username } = useParams()
-  const [isModeAdmin, setisModeAdmin] = useState(false)
+  const [isModeAdmin, setisModeAdmin] = useState(true)
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [currentTabSelected, setCurrentTabSelected] = useState("add")
+  const [currentTabSelected, setCurrentTabSelected] = useState("edit")
   const [menu, setMenu] = useState(fakeMenu.MEDIUM);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
 
 
   const handleAdd = (newProduct) => {
@@ -47,7 +49,9 @@ function OrderPage() {
     handleDelete: handleDelete,
     resetMenu: resetMenu,
     newProduct: newProduct, 
-    setNewProduct: setNewProduct
+    setNewProduct: setNewProduct,
+    productSelected: productSelected,
+    setProductSelected: setProductSelected,
   }
 
   return (

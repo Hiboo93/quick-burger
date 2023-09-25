@@ -2,6 +2,7 @@ import AddForm from "./adminPanel/AddForm.jsx";
 import EditForm from "./adminPanel/EditForm.jsx";
 import { AiOutlinePlus } from "react-icons/ai"
 import { MdModeEditOutline } from "react-icons/md"
+//import HintMessage from "./adminPanel/HintMessage.jsx";
 
 export const tabsConfig = [
     {
@@ -14,8 +15,11 @@ export const tabsConfig = [
       index: "edit",
       label: "Modifier un produit",
       Icon: <MdModeEditOutline/>,
-      Content: <EditForm />
-    },
+      Content: <EditForm />,
+      //Content: <HintMessage/>
+    }
   ];
 
- export const getTabSelected = (tabs, currentTabSelected) => tabs.find((tab) => tab.index === currentTabSelected)
+ export const getTabSelected = (tabs, currentTabSelected) => {
+  return tabs.find((tab) => tab.index === currentTabSelected)
+}

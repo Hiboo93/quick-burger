@@ -10,15 +10,11 @@ import ImagePreview from './ImagePreview.jsx';
 import SubmitMessage from './SubmitMessage.jsx';
 import { BsFillCameraFill } from 'react-icons/bs';
 import { MdOutlineEuro } from 'react-icons/md';
+import { EMPTY_PRODUCT } from '../../../../../../../enums/product.jsx';
 //import PrimaryButton from '../../../../../../reusable-ui/PrimaryButton.jsx';
 
 
-export const EMPTY_PRODUCT = {
-  id: "",
-  title: "",
-  imageSource: "",
-  price: 0,
-};
+
 
 export default function AddForm() {
   const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
