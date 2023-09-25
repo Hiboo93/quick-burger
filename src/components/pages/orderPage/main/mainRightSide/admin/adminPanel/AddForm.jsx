@@ -1,20 +1,12 @@
 import { useContext, useState } from 'react'
 import styled from 'styled-components';
 import OrderContext from '../../../../../../../context/OrderContext.jsx';
-import { FaHamburger } from 'react-icons/fa';
-//import { BsFillCameraFill } from 'react-icons/bs';
-//import { MdOutlineEuro } from 'react-icons/md';
 import TextInput from '../../../../../../reusable-ui/TextInput.jsx';
 import Button from '../../../../../../reusable-ui/Button.jsx';
 import ImagePreview from './ImagePreview.jsx';
 import SubmitMessage from './SubmitMessage.jsx';
-import { BsFillCameraFill } from 'react-icons/bs';
-import { MdOutlineEuro } from 'react-icons/md';
 import { EMPTY_PRODUCT } from '../../../../../../../enums/product.jsx';
-//import PrimaryButton from '../../../../../../reusable-ui/PrimaryButton.jsx';
-
-
-
+import { getInputTextsConfig } from './inputTextConfig.jsx';
 
 export default function AddForm() {
   const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
@@ -46,35 +38,8 @@ export default function AddForm() {
     }, 3000);
   };
 
-  const inputTexts = [
-    {
-      id: "0",
-      name: "title",
-      value: newProduct.title,
-      type: "text",
-      placeholder: "Nom du produit",
-      Icon: <FaHamburger />,
-      version: "minimalist",
-    },
-    {
-      id: "1",
-      name: "imageSource",
-      value: newProduct.imageSource,
-      type: "text",
-      placeholder: "Lien URL d'une Image",
-      Icon: <BsFillCameraFill />,
-      version: "minimalist",
-    },
-    {
-      id: "2",
-      name: "price",
-      value: newProduct.price ? newProduct.price : "",
-      type: "text",
-      placeholder: "prix",
-      Icon: <MdOutlineEuro />,
-      version: "minimalist",
-    },
-  ];
+
+  const inputTexts = getInputTextsConfig(newProduct)
 
   return (
     <AddFormStyled onSubmit={handleSubmit}>
