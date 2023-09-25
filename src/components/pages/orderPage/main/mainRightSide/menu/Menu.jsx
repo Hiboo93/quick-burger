@@ -7,19 +7,25 @@ import Card from "../../../../../reusable-ui/Card.jsx";
 import OrderContext from "../../../../../../context/OrderContext.jsx";
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
 import EmptyMenuClient from "./EmptyMenuClient.jsx";
-//import { fakeMenu } from "../../../../fakeData/fakeMenu.js";
+
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
 export default function Menu() {
   //const [menu, setMenu] = useState(fakeMenu.MEDIUM);
-  const { menu, isModeAdmin, handleDelete, resetMenu } =
+  const { menu, isModeAdmin, handleDelete, resetMenu, setProductSelected } =
     useContext(OrderContext);
 
   if (menu.length === 0) {
     if(!isModeAdmin) return <EmptyMenuClient/>
     return <EmptyMenuAdmin onReset={resetMenu} />
   } 
+
+  const handleClick = (idProductClicked) => {
+    const productSelected = menu.find((product) => product.id === idProductClicked)
+    setProductSelected(productSelected)
+  }
+  
 
   return (
     <MenuStyled className="menu">
@@ -34,6 +40,7 @@ export default function Menu() {
             leftDescription={formatPrice(produit.price)}
             hasDeletButton={isModeAdmin}
             onDelete={() => handleDelete(produit.id)}
+            onClick={() => handleClick(produit.id)}
           />
         );
       })}
@@ -42,7 +49,6 @@ export default function Menu() {
 }
 
 const MenuStyled = styled.div`
-  //border: 2px solid blue;
   background: ${theme.colors.background_white};
   display: grid;
   grid-template-columns: repeat(4, 1fr);
