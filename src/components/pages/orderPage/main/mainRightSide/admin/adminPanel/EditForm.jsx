@@ -1,49 +1,50 @@
-import { useContext, useState } from 'react'
-import HintMessage from './HintMessage.jsx'
+import { useContext } from 'react'
 import OrderContext from '../../../../../../../context/OrderContext.jsx'
 import styled from 'styled-components'
 import ImagePreview from './ImagePreview.jsx'
 import TextInput from '../../../../../../reusable-ui/TextInput.jsx'
 import { getInputTextsConfig } from './inputTextConfig.jsx'
-import { EMPTY_PRODUCT } from '../../../../../../../enums/product.jsx'
+
 
 export default function EditForm() {
+  const { productSelected, setProductSelected, handleEdit } =
+    useContext(OrderContext);
 
-  const {productSelected} = useContext(OrderContext)
-  const [productBeingEdited, setProductBeingEdited] = useState(EMPTY_PRODUCT)
-
-  const inputTexts = getInputTextsConfig(productSelected)
+  const inputTexts = getInputTextsConfig(productSelected);
 
   const handleChange = (event) => {
-    const {name, value} = event.target
-    setProductBeingEdited({
-      ...productBeingEdited,
+    const { name, value } = event.target;
+    const productBeingUpdated = {
+      ...productSelected,
       [name]: value,
-    })
-  }
-  
+    };
+
+    setProductSelected(productBeingUpdated); // cette ligne update le formulaire
+    // state handler du menu
+    handleEdit(productBeingUpdated); // cette ligne update le menu
+  };
   return (
-    <EditFormStyled >
-    <ImagePreview
-      imageSource={productSelected.imageSource}
-      title={productSelected.title}
-    />
-    <div className="input-fields">
-      {inputTexts.map((input) => (
-        <TextInput
-          key={input.id}
-          name={input.name}
-          value={input.value}
-          placeholder={input.placeholder}
-          Icon={input.Icon}
-          onChange={handleChange}
-          version="minimalist"
-        />
-      ))}
-    </div>
-    <div className="submit"></div>
-  </EditFormStyled>
-  )
+    <EditFormStyled>
+      <ImagePreview
+        imageSource={productSelected.imageSource}
+        title={productSelected.title}
+      />
+      <div className="input-fields">
+        {inputTexts.map((input) => (
+          <TextInput
+            key={input.id}
+            name={input.name}
+            value={input.value}
+            placeholder={input.placeholder}
+            Icon={input.Icon}
+            onChange={handleChange}
+            version="minimalist"
+          />
+        ))}
+      </div>
+      <div className="submit"></div>
+    </EditFormStyled>
+  );
 }
 
 const EditFormStyled = styled.form`

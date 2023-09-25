@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { styled } from "styled-components";
-//import { fakeMenu } from "../../../../fakeData/fakeMenu.js";
 import { theme } from "../../../../../../theme/index.js";
 import { formatPrice } from "../../../../../../utils/maths.js";
 import Card from "../../../../../reusable-ui/Card.jsx";
@@ -17,15 +16,16 @@ export default function Menu() {
     useContext(OrderContext);
 
   if (menu.length === 0) {
-    if(!isModeAdmin) return <EmptyMenuClient/>
-    return <EmptyMenuAdmin onReset={resetMenu} />
-  } 
+    if (!isModeAdmin) return <EmptyMenuClient />;
+    return <EmptyMenuAdmin onReset={resetMenu} />;
+  }
 
   const handleClick = (idProductClicked) => {
-    const productSelected = menu.find((product) => product.id === idProductClicked)
-    setProductSelected(productSelected)
-  }
-  
+    const productSelected = menu.find(
+      (product) => product.id === idProductClicked
+    );
+    setProductSelected(productSelected);
+  };
 
   return (
     <MenuStyled className="menu">
