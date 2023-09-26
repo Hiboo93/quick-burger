@@ -6,6 +6,7 @@ import { useState } from "react";
 import OrderContext from "../../../context/OrderContext.jsx";
 import { fakeMenu } from "../../../fakeData/fakeMenu.js";
 import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
+import { deepClone } from "../../../utils/array.js";
 
 //import { useParams } from "react-router-dom";
 
@@ -21,7 +22,7 @@ function OrderPage() {
 
   const handleAdd = (newProduct) => {
      // 1. copie du tableau
-     const menuCopy = JSON.parse(JSON.stringify(menu))
+     const menuCopy = deepClone(menu)
 
     // 2. manip de la copie du tableau
     const menuUpdated = [newProduct, ...menuCopy]
@@ -32,7 +33,7 @@ function OrderPage() {
 
   const handleDelete = (idOfProductToDelete) => {
     // 1. copie du tableau
-    const menuCopy = JSON.parse(JSON.stringify(menu))
+    const menuCopy = deepClone(menu)
 
     // 2. manip de la copie du state
     const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete)
@@ -43,7 +44,7 @@ function OrderPage() {
 
   const handleEdit = (productBeingEdited) => {
     // 1. copie du state (deep clone)
-    const menuCopy = JSON.parse(JSON.stringify(menu))
+    const menuCopy = deepClone(menu)
     
     // 2. manip de la copie du state
     const indexOfProductToEdit = menu.findIndex((menuProduct) => menuProduct.id === productBeingEdited.id)
