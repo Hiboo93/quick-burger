@@ -4,10 +4,9 @@ import styled from "styled-components"
 //import imgBurger from "/src/assets/F03 burger-background.jpg"
 
 function PageLogin() {
-
   return (
     <PageLoginStyled >
-      <LogoQuickBurger className={"login-login-page"}/>
+      <LogoQuickBurger className={"logo-login-page"}/>
       <LoginForm/>
     </PageLoginStyled>
   );
@@ -37,7 +36,7 @@ const PageLoginStyled = styled.div`
     z-index: -1;
   }
 
-  .login-login-page {
+  .logo-login-page {
     //transform: scale(2.5);
   }
 `

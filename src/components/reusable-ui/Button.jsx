@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components'
 
 export default function Button({
   Icon,
-  name,
   label,
   className,
   onClick,
@@ -101,6 +100,6 @@ const extraStyleSuccess = css`
 `;
 
 const extraStyle = {
-  primary: extraStylePrimary,
+  normal: extraStylePrimary,
   success: extraStyleSuccess,
 };

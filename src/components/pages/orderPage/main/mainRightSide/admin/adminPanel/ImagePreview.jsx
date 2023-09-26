@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components';
 import { theme } from '../../../../../../../theme/index.js';
 
@@ -15,7 +14,6 @@ export default function ImagePreview({ imageSource, title }) {
 }
 
 const ImagePreviewStyled = styled.div`
-
     grid-area: 1 / 1 / 4 / 2;
     display: flex;
     justify-content: center;

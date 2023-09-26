@@ -101,7 +101,7 @@ const extraStyleSuccess = css`
 `;
 
 const extraStyle = {
-  primary: extraStylePrimary,
+  normal: extraStylePrimary,
   success: extraStyleSuccess,
 };
 

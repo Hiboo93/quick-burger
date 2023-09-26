@@ -43,6 +43,7 @@ export default function Menu() {
             hasDeletButton={isModeAdmin}
             onDelete={() => handleDelete(produit.id)}
             onClick={() => handleClick(produit.id)}
+            isHoverable={isModeAdmin}
           />
         );
       })}
@@ -59,5 +60,5 @@ const MenuStyled = styled.div`
   padding: 50px 50px 150px;
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-  overflow: scroll;
+  overflow-y: scroll;
 `;

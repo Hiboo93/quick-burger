@@ -6,14 +6,13 @@ function TextInput({
   onChange,
   Icon,
   className,
-  value,
   version = "normal",
   ...extraProps
 }) {
   return (
     <TextInputStyled className={className} version={version}>
       <div className="icon">{Icon && Icon}</div>
-      <input type="text" onChange={onChange} value={value} {...extraProps} />
+      <input type="text" onChange={onChange} {...extraProps} />
     </TextInputStyled>
   );
 }
@@ -48,8 +47,6 @@ const TextInputStyled = styled.div`
   }} */
   ${(props) => extraStyle[props.version]}
 `;
-
-
 
 const extraStyleNormal = css`
   background-color: ${theme.colors.white};
