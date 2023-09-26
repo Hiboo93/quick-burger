@@ -8,10 +8,8 @@ import { fakeMenu } from "../../../fakeData/fakeMenu.js";
 import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
 import { deepClone } from "../../../utils/array.js";
 
-//import { useParams } from "react-router-dom";
-
 function OrderPage() {
-  //const { username } = useParams()
+  // state
   const [isModeAdmin, setisModeAdmin] = useState(true)
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("edit")
@@ -19,7 +17,7 @@ function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
 
-
+  // comportements (gestionnaire de state ou "state handlers")
   const handleAdd = (newProduct) => {
      // 1. copie du tableau
      const menuCopy = deepClone(menu)
