@@ -1,4 +1,3 @@
-import React from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../theme/index.js';
 
@@ -23,7 +22,7 @@ const TabStyled = styled.button`
   cursor: pointer;
 
   position: relative;
-  left: 5%;
+  //left: 5%;
   top: 1px;
 
   font-size: ${theme.fonts.size.P0};
@@ -42,6 +41,7 @@ const TabStyled = styled.button`
 
   :hover {
     border-bottom: 2px solid ${theme.colors.white};
+    text-decoration: underline;
   }
 
   .icon {

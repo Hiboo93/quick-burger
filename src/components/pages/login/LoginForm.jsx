@@ -4,10 +4,8 @@ import { BsPersonCircle } from "react-icons/bs"
 import { IoChevronForward } from "react-icons/io5"
 import styled from "styled-components"
 import TextInput from "../../reusable-ui/TextInput.jsx";
-import PrimaryButton from "../../reusable-ui/PrimaryButton.jsx";
+import Button from "../../reusable-ui/Button.jsx"
 import { theme } from "../../../theme/index.js";
-//import theme from "/src/theme/index.js"
-//import LogoQuickBurger from "../../LogoQuickBurger.jsx";
 
 function LoginForm() {
   const [name, setName] = useState("");
@@ -24,11 +22,7 @@ function LoginForm() {
   };
 
   return (
-    <LoginFormStyled
-      action="submit"
-      onSubmit={handleSubmit}
-      className="form-container"
-    >
+    <LoginFormStyled action="submit" onSubmit={handleSubmit}>
       <div>
         <h1>Bienvenue chez-nous !</h1>
         <hr />
@@ -44,14 +38,13 @@ function LoginForm() {
           className="input-login"
           version="normal"
         />
-        <PrimaryButton
+        <Button
           label={"Accédez à mon espace"}
-          name={name}
           Icon={<IoChevronForward />}
         />
       </div>
     </LoginFormStyled>
-  )
+  );
 }
 
 const LoginFormStyled = styled.form`
@@ -64,7 +57,8 @@ const LoginFormStyled = styled.form`
  font-family: "Amatic SC", cursive;
 
   hr {
-    border: 1.5px solid #f56a2c;
+    border: 1.5px solid ${theme.colors.loginLine};
+    //border: 1.5px solid #f56a2c;
     margin-bottom: ${theme.gridUnit * 5}px;
   }
 

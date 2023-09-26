@@ -1,17 +1,16 @@
-import { Outlet, useMatch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import PageLogin from "./components/pages/login/PageLogin.jsx";
+import OrderPage from "./components/pages/orderPage/OrderPage.jsx";
+import ErrorPage from "./components/pages/errorPage/ErrorPage.jsx"
 
 function App() {
-
-  const racine = useMatch('/')
-
   return (
-    <>
-      <div>
-        { racine ? <PageLogin/> : <Outlet />}
-      </div>
-    </>
+      <Routes>
+        <Route path="/" element={<PageLogin/>} />
+        <Route path="/order/:username" element={<OrderPage/>} />
+        <Route path="*" element={<ErrorPage/>} />
+      </Routes>
   );
 }
 export default App;

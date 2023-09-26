@@ -1,26 +1,39 @@
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 import { theme } from "../../theme/index.js";
-import PrimaryButton from "./PrimaryButton.jsx";
 import { TiDelete } from "react-icons/ti"
+import Button from "./Button.jsx";
 
-export default function Card({ title, imageSource, leftDescription, hasDeletButton, onDelete, onClick }) {
+export default function Card({
+  title,
+  imageSource,
+  leftDescription,
+  hasDeletButton,
+  onDelete,
+  onClick,
+  isHoverable
+}) {
   return (
-    <CardStyled className="produit" onClick={onClick}>
-      {hasDeletButton && (
-        <button className="delete-button" aria-label="delete-button" onClick={onDelete}> 
-        <TiDelete className="icon"/>
-      </button>
-      )}
-
-      <div className="image">
-        <img src={imageSource} alt={title} />
-      </div>
-      <div className="info-text">
-        <div className="title">{title}</div>
-        <div className="description">
-          <div className="left-description">{leftDescription}</div>
-          <div className="right-description">
-            <PrimaryButton className="primary-button" label={"Ajouter"} />
+    <CardStyled className="produit" onClick={onClick} isHoverable={isHoverable}>
+      <div className="card">
+        {hasDeletButton && (
+          <button
+            className="delete-button"
+            aria-label="delete-button"
+            onClick={onDelete}
+          >
+            <TiDelete className="icon" />
+          </button>
+        )}
+        <div className="image">
+          <img src={imageSource} alt={title} />
+        </div>
+        <div className="text-info">
+          <div className="title">{title}</div>
+          <div className="description">
+            <div className="left-description">{leftDescription}</div>
+            <div className="right-description">
+              <Button className="primary-button" label={"Ajouter"} />
+            </div>
           </div>
         </div>
       </div>
@@ -29,6 +42,10 @@ export default function Card({ title, imageSource, leftDescription, hasDeletButt
 }
 
 const CardStyled = styled.div`
+${(props) => props.isHoverable && hoverableStyle}
+border-radius: ${theme.borderRadius.extraRound};
+
+.card {
   background: ${theme.colors.white};
   box-sizing: border-box;
   width: 240px;
@@ -37,12 +54,12 @@ const CardStyled = styled.div`
   grid-template-rows: 65% 1fr;
   padding: 20px;
   padding-bottom: 10px;
-  box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+  box-shadow: ${theme.shadows.medium};
   border-radius: ${theme.borderRadius.extraRound};
   position: relative;
 
   .delete-button {
-    border: 1px solid;
+    border: 1px solid red;
     position: absolute;
     top: 15px;
     right: 15px;
@@ -83,15 +100,15 @@ const CardStyled = styled.div`
     }
   }
 
-  .info-text {
+  .text-info {
     //border: 1px solid fuchsia;
     display: grid;
     grid-template-rows: 30% 70%;
     padding: 5px;
 
     .title {
-      font-size: ${theme.fonts.size.P4};
       margin: auto 0;
+      font-size: ${theme.fonts.size.P4};
       position: relative;
       bottom: 10px;
       font-weight: ${theme.fonts.weights.bold};
@@ -135,4 +152,15 @@ const CardStyled = styled.div`
       }
     }
   }
+}
 `;
+
+const hoverableStyle = css`
+:hover {
+  transform: scale(1.05);
+  transition: ease-out 0.4s;
+  box-shadow: ${theme.shadows.orangeHighlight};
+  cursor: pointer;
+  //border: 1px solid red;
+}
+`
