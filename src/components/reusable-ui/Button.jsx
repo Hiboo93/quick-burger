@@ -13,7 +13,7 @@ export default function Button({
       <span>{label}</span>
       <div className="icon">{Icon && Icon}</div>
     </ButtonStyled>
-  );
+  )
 }
 
 const ButtonStyled = styled.button`
@@ -39,7 +39,7 @@ const extraStylePrimary = css`
   background-color: #ff9f1b;
   border: 1px solid #ff9f1b;
 
-  :hover {
+  ${'' /* :hover {
     color: ${theme.colors.primary};
     background-color: ${theme.colors.white};
     border: 1px solid ${theme.colors.primary};
@@ -54,7 +54,26 @@ const extraStylePrimary = css`
     opacity: 50%;
     cursor: not-allowed;
     z-index: 2;
+  } */}
+
+&:hover:not(:disabled) {
+    background-color: white;
+    color: #ff9f1b;
+    border: 1px solid #ff9f1b;
+    transition: all 200ms ease-out;
   }
+
+  &:active {
+    color: white;
+    background-color: #ff9f1b;
+    border: 1px solid #ff9f1b;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
 
   &.with-focus {
     border: 1px solid white;
