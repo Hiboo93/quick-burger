@@ -164,7 +164,7 @@ const hoverableStyle = css`
   :hover {
     transform: scale(1.05);
     transition: ease-out 0.4s;
-    box-shadow: ${theme.shadows.orangeHighlight};
+    //box-shadow: ${theme.shadows.orangeHighlight};
     cursor: pointer;
   }
 `;
