@@ -79,6 +79,7 @@ const extraStylePrimary = css`
     //margin-left: 10px;
   }
 `;
+
 const extraStyleSuccess = css`
   cursor: pointer;
   color: ${theme.colors.white};

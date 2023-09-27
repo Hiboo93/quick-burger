@@ -24,6 +24,7 @@ export default function Card({
             <TiDelete className="icon" />
           </button>
         )}
+
         <div className="image">
           <img src={imageSource} alt={title} />
         </div>
@@ -38,14 +39,16 @@ export default function Card({
         </div>
       </div>
     </CardStyled>
-  );
+  )
 }
 
 const CardStyled = styled.div`
 ${(props) => props.isHoverable && hoverableStyle}
 border-radius: ${theme.borderRadius.extraRound};
 
+
 .card {
+  //border: 1px solid red;
   background: ${theme.colors.white};
   box-sizing: border-box;
   width: 240px;
@@ -54,7 +57,7 @@ border-radius: ${theme.borderRadius.extraRound};
   grid-template-rows: 65% 1fr;
   padding: 20px;
   padding-bottom: 10px;
-  box-shadow: ${theme.shadows.medium};
+  box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
   border-radius: ${theme.borderRadius.extraRound};
   position: relative;
 
@@ -159,8 +162,7 @@ const hoverableStyle = css`
 :hover {
   transform: scale(1.05);
   transition: ease-out 0.4s;
-  box-shadow: ${theme.shadows.orangeHighlight};
+  //box-shadow: ${theme.shadows.orangeHighlight};
   cursor: pointer;
-  //border: 1px solid red;
 }
 `
