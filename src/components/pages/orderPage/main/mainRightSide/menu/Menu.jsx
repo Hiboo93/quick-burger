@@ -18,6 +18,7 @@ export default function Menu() {
 
     // comportements (gestionnaire d'évenement ou "event handlers")
     const handleClick = (idProductClicked) => {
+      if (!isModeAdmin) return
       const productClickedOn = menu.find(
         (product) => product.id === idProductClicked
       );
