@@ -73,7 +73,6 @@ function OrderPage() {
     productSelected: productSelected,
     setProductSelected: setProductSelected,
     handleEdit:handleEdit,
-    
   }
 
   return (
