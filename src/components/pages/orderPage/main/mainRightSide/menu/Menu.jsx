@@ -13,12 +13,15 @@ const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
 export default function Menu() {
   //const [menu, setMenu] = useState(fakeMenu.MEDIUM);
-  const { menu, isModeAdmin, handleDelete, resetMenu, productSelected, setProductSelected } =
+  const { menu, isModeAdmin, handleDelete, resetMenu, productSelected, setProductSelected, setIsCollapsed, setCurrentTabSelected, } =
     useContext(OrderContext);
 
     // comportements (gestionnaire d'évenement ou "event handlers")
     const handleClick = (idProductClicked) => {
       if (!isModeAdmin) return
+
+      setIsCollapsed(false)
+      setCurrentTabSelected("edit")
       const productClickedOn = menu.find(
         (product) => product.id === idProductClicked
       );
