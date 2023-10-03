@@ -5,6 +5,7 @@ import ImagePreview from './ImagePreview.jsx'
 import TextInput from '../../../../../../reusable-ui/TextInput.jsx'
 import { getInputTextsConfig } from './inputTextConfig.jsx'
 import { theme } from '../../../../../../../theme/index.js'
+import EditInfoMessage from './EditInfoMessage.jsx'
 
 
 export default function EditForm() {
@@ -45,10 +46,7 @@ export default function EditForm() {
         ))}
       </div>
       <div className="submit">
-        <span className='sentence'>
-          Cliquer sur un produit du menu pour le modifier
-          <span className='live-update'> en temps réel</span>
-        </span>
+        <EditInfoMessage/>
       </div>
     </EditFormStyled>
   );
@@ -78,13 +76,5 @@ const EditFormStyled = styled.form`
     align-items: center;
     position: relative;
     top: 3px;
-
-    .sentence {
-      color: ${theme.colors.primary};
-      font-size: ${theme.fonts.size.SM};
-      .live-update {
-        text-decoration: underline;
-      }
-    }
   }
 `;
