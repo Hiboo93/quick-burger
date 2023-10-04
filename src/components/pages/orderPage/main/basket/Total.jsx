@@ -14,7 +14,6 @@ export default function Total({amountToPay}) {
 }
 
 const TotalStyled = styled.div`
-  border: 1px solid red;
   height: 100%;
   display: flex;
   justify-content: space-between;

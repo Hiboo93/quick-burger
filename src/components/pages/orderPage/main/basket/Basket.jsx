@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../../../../theme/index.js";
+//import { theme } from "../../../../../theme/index.js";
 //import Header from "../../../../reusable-ui/Header.jsx";
 import Total from "./Total.jsx";
 import { formatPrice } from "../../../../../utils/maths.js";

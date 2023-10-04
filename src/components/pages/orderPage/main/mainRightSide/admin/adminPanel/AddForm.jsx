@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import styled from 'styled-components';
 import OrderContext from '../../../../../../../context/OrderContext.jsx';
 import TextInput from '../../../../../../reusable-ui/TextInput.jsx';
@@ -7,11 +7,12 @@ import ImagePreview from './ImagePreview.jsx';
 import SubmitMessage from './SubmitMessage.jsx';
 import { EMPTY_PRODUCT } from '../../../../../../../enums/product.jsx';
 import { getInputTextsConfig } from './inputTextConfig.jsx';
+import { useDisplaySuccessMessage } from '../../../../../../../hooks/useDisplaySuccessMessage.jsx';
 
 export default function AddForm() {
   const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
-  //const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
-  const [isSubmited, setIsSubmited] = useState(false);
+  const { isSubmited, displaySuccessMessage} = useDisplaySuccessMessage()
+  //const [isSubmited, setIsSubmited] = useState(false); useState intégré au custom hooks useDisplaySuccesMessage
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -31,13 +32,13 @@ export default function AddForm() {
     setNewProduct({ ...newProduct, [name]: newValue });
   };
 
-  const displaySuccessMessage = () => {
-    setIsSubmited(true);
-    setTimeout(() => {
-      setIsSubmited(false);
-    }, 3000);
-  };
-
+  //fonction displaySuccesMessage intégré au custom hooks useDisplaySuccessMessage
+  // const displaySuccessMessage = () => {
+  //   setIsSubmited(true);
+  //   setTimeout(() => {
+  //     setIsSubmited(false);
+  //   }, 3000);
+  // };
 
   const inputTexts = getInputTextsConfig(newProduct)
 
