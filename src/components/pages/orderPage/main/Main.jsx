@@ -13,7 +13,6 @@ function Main() {
 }
 
 const MainStyled = styled.div`
-  //border: 3px solid green;
   background: ${theme.colors.background_white};
   height: calc(95vh - 10vh);
 
@@ -23,6 +22,7 @@ const MainStyled = styled.div`
 
   display: grid;
   grid-template-columns: 25% 1fr;
+  overflow: hidden;
 `;
 
 export default Main;
