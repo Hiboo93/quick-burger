@@ -1,12 +1,12 @@
 import { styled } from "styled-components";
 import { theme } from "../../../../theme/index.js";
 import MainRightSide from "./mainRightSide/MainRightSide.jsx";
-//import Basket from "./Basket.jsx";
+import Basket from "./Basket.jsx";
 
 function Main() {
   return (
     <MainStyled>
-       {/* <Basket/> */}
+       <Basket/>
       <MainRightSide/>
     </MainStyled>
   );
@@ -22,7 +22,7 @@ const MainStyled = styled.div`
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
 
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 25% 1fr;
 `;
 
 export default Main;
