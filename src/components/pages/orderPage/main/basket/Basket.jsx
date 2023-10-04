@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme/index.js";
 import Header from "../../../../reusable-ui/Header.jsx";
+import Total from "./Total.jsx";
+import { formatPrice } from "../../../../../utils/maths.js";
 
 export default function Basket() {
   return (
     <BasketStylde>
-      <Header>Head</Header>
+      <Total amountToPay={formatPrice(0)}/>
       <div className="body">Body</div>
       <Header>Footer</Header>
     </BasketStylde>
@@ -23,6 +25,4 @@ const BasketStylde = styled.div`
     background: ${theme.colors.background_white};
     box-shadow: ${theme.shadows.basket};
   }
-
-  
 `;
