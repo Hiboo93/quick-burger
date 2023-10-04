@@ -1,13 +1,13 @@
 import { styled } from "styled-components";
 import { theme } from "../../../../theme/index.js";
 import MainRightSide from "./mainRightSide/MainRightSide.jsx";
-import Basket from "./Basket.jsx";
+import Basket from "./basket/Basket.jsx";
 
 function Main() {
   return (
     <MainStyled>
-       <Basket/>
-      <MainRightSide/>
+      <Basket />
+      <MainRightSide />
     </MainStyled>
   );
 }
