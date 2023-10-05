@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { theme } from '../../../../../theme/index.js';
 
-export default function BasketBody() {
+
+export default function EmptyBasket() {
   return (
     <BasketBodyStyled>
-      <span className='empty-message'>Votre commande est vide.</span>
+      <span className='empty-message'>Votre commande est vide</span>
     </BasketBodyStyled>
   )
 }

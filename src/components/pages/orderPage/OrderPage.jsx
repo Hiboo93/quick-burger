@@ -8,6 +8,7 @@ import OrderContext from "../../../context/OrderContext.jsx";
 import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
 //import { deepClone } from "../../../utils/array.js";
 import { useMenu } from "../../../hooks/useMenu.jsx";
+import { useBasket } from "../../../hooks/useBasket.jsx";
 
 function OrderPage() {
   // state
@@ -18,6 +19,7 @@ function OrderPage() {
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   
   const {menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
+  const { basket } = useBasket()
 
   // comportements (gestionnaire de state ou "state handlers")
 
@@ -36,7 +38,8 @@ function OrderPage() {
     setNewProduct: setNewProduct,
     productSelected: productSelected,
     setProductSelected: setProductSelected,
-    handleEdit:handleEdit,
+    handleEdit: handleEdit,
+    basket: basket,
   }
 
   return (
