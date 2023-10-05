@@ -4,59 +4,23 @@ import Navbar from "./navbar/Navbar.jsx";
 import Main from "./main/Main.jsx";
 import { useState } from "react";
 import OrderContext from "../../../context/OrderContext.jsx";
-import { fakeMenu } from "../../../fakeData/fakeMenu.js";
+//import { fakeMenu } from "../../../fakeData/fakeMenu.js";
 import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
-import { deepClone } from "../../../utils/array.js";
+//import { deepClone } from "../../../utils/array.js";
+import { useMenu } from "../../../hooks/useMenu.jsx";
 
 function OrderPage() {
   // state
   const [isModeAdmin, setisModeAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
-  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
+  
+  const {menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
 
   // comportements (gestionnaire de state ou "state handlers")
-  const handleAdd = (newProduct) => {
-     // 1. copie du tableau
-     const menuCopy = deepClone(menu)
 
-    // 2. manip de la copie du tableau
-    const menuUpdated = [newProduct, ...menuCopy]
-
-    // 3. update du state
-    setMenu(menuUpdated)
-  }
-
-  const handleDelete = (idOfProductToDelete) => {
-    // 1. copie du tableau
-    const menuCopy = deepClone(menu)
-
-    // 2. manip de la copie du state
-    const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete)
-
-    // 3. update du state
-    setMenu(menuUpdated)
-  }
-
-  const handleEdit = (productBeingEdited) => {
-    // 1. copie du state (deep clone)
-    const menuCopy = deepClone(menu)
-    
-    // 2. manip de la copie du state
-    const indexOfProductToEdit = menu.findIndex((menuProduct) => menuProduct.id === productBeingEdited.id)
-
-    menuCopy[indexOfProductToEdit] = productBeingEdited
-
-    // 3. update du state
-    setMenu(menuCopy)
-  }
-
-  const resetMenu = () => {
-    setMenu(fakeMenu.MEDIUM)
-  }
-  
   const orderContextValue = {
     isModeAdmin: isModeAdmin,
     setisModeAdmin: setisModeAdmin,
