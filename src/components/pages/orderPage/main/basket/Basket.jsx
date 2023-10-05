@@ -6,6 +6,7 @@ import { formatPrice } from "../../../../../utils/maths.js";
 import Footer from "./Footer.jsx";
 import BasketBody from "./BasketBody.jsx";
 
+
 export default function Basket() {
   return (
     <BasketStylde>
