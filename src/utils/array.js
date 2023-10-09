@@ -6,3 +6,9 @@ export const find = (id, array) => {
   return array.find((itemInArray) => itemInArray.id === id)
 }
 
+export const findIndex = (idWithUnknowIndex, array) => {
+  return array.findIndex(
+    (itemInArray) => itemInArray.id === idWithUnknowIndex
+  );
+}
+
