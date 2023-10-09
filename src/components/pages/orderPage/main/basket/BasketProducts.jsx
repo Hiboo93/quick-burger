@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import BasketCard from "./BasketCard.jsx";
+import { IMAGE_BY_DEFAULT } from "../../../../../enums/product.jsx";
 //import { formatPrice } from "../../../../../utils/maths.js";
 
 export default function BasketProducts({ basket }) {
@@ -7,7 +8,7 @@ export default function BasketProducts({ basket }) {
     <BasketProductsStyled>
      {basket.map((basketProduct) => 
      <div className="basket-card" key={basketProduct.id}>
-      <BasketCard {...basketProduct} />
+      <BasketCard {...basketProduct} imageSource={basketProduct.imageSource ? basketProduct.imageSource : IMAGE_BY_DEFAULT} />
      </div>
       
      )}
@@ -20,7 +21,6 @@ const BasketProductsStyled = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  
 
   .basket-card {
     margin: 10px 16px;

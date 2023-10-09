@@ -7,9 +7,10 @@ import OrderContext from "../../../../../../context/OrderContext.jsx";
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
 import EmptyMenuClient from "./EmptyMenuClient.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
+import { IMAGE_BY_DEFAULT } from "../../../../../../enums/product.jsx";
 
 
-const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
+
 
 export default function Menu() {
   //const [menu, setMenu] = useState(fakeMenu.MEDIUM);
