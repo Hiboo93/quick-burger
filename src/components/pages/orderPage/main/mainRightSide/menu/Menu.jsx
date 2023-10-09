@@ -8,13 +8,14 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
 import EmptyMenuClient from "./EmptyMenuClient.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
 import { IMAGE_BY_DEFAULT } from "../../../../../../enums/product.jsx";
+import { find } from "../../../../../../utils/array.js";
 
 
 
 
 export default function Menu() {
   //const [menu, setMenu] = useState(fakeMenu.MEDIUM);
-  const { menu, isModeAdmin, handleDelete, resetMenu, productSelected, setProductSelected, setIsCollapsed, setCurrentTabSelected, } =
+  const { menu, isModeAdmin, handleDelete, resetMenu, productSelected, setProductSelected, setIsCollapsed, setCurrentTabSelected, handleAddToBasket } =
     useContext(OrderContext);
 
     // comportements (gestionnaire d'évenement ou "event handlers")
@@ -23,9 +24,7 @@ export default function Menu() {
 
       setIsCollapsed(false)
       setCurrentTabSelected("edit")
-      const productClickedOn = menu.find(
-        (product) => product.id === idProductClicked
-      );
+      const productClickedOn = find(idProductClicked, menu);
       setProductSelected(productClickedOn);
     };
 
@@ -40,6 +39,13 @@ export default function Menu() {
     handleDelete(idProductToDelete)
   }
   
+  const handleAddButoon = (event, idProductToAdd) => {
+    event.stopPropagation()
+    const productToAdd = menu.find((menuProduct) => menuProduct.id === idProductToAdd)
+    
+
+    handleAddToBasket(productToAdd)
+  }
 
   return (
     <MenuStyled className="menu">
@@ -57,6 +63,7 @@ export default function Menu() {
             onClick={() => handleClick(id)}
             isHoverable={isModeAdmin}
             isSelected={checkIfProductIsClicked(id, productSelected.id)}
+            onAdd={(event) => handleAddButoon(event, id)}
           />
         );
       })}

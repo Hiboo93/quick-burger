@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import BasketCard from "./BasketCard.jsx";
 import { IMAGE_BY_DEFAULT } from "../../../../../enums/product.jsx";
-//import { formatPrice } from "../../../../../utils/maths.js";
 
 export default function BasketProducts({ basket }) {
   return (

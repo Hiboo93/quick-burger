@@ -19,7 +19,7 @@ function OrderPage() {
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   
   const {menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
-  const { basket } = useBasket()
+  const { basket, handleAddToBasket } = useBasket()
 
   // comportements (gestionnaire de state ou "state handlers")
 
@@ -40,6 +40,7 @@ function OrderPage() {
     setProductSelected: setProductSelected,
     handleEdit: handleEdit,
     basket: basket,
+    handleAddToBasket: handleAddToBasket
   }
 
   return (
