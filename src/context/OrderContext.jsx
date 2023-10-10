@@ -22,10 +22,7 @@ export default createContext({
     ProductSelected: {},
     setProductSelected: () => {},
 
-
-    // isAddSelected: false,
-    // setIsAddSelected: () => {},
-
-    // isEditSelected: false,
-    // setIsEditSelected: () => {},
+    basket: [],
+    handleAddToBasket: () => {},
+    handleDeleteBasketProduct: () => {},
 });
