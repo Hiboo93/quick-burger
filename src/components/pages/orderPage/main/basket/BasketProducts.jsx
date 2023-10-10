@@ -2,9 +2,9 @@ import styled from "styled-components";
 import BasketCard from "./BasketCard.jsx";
 import { IMAGE_BY_DEFAULT } from "../../../../../enums/product.jsx";
 
-export default function BasketProducts({ basket, isModeAdmin }) {
+export default function BasketProducts({ basket, isModeAdmin, handleDeleteBasketProduct }) {
   const handleOnDelete = (id) => {
-    
+    handleDeleteBasketProduct(id)
   }
 
   return (

@@ -10,7 +10,7 @@ import { theme } from "../../../../../theme/index.js";
 
 
 export default function Basket() {
-  const { basket, isModeAdmin } = useContext(OrderContext);
+  const { basket, isModeAdmin, handleDeleteBasketProduct } = useContext(OrderContext);
 
   const isBasketEmpty = basket.length === 0;
 
@@ -22,7 +22,7 @@ export default function Basket() {
   return (
     <BasketStyled>
       <Total amountToPay={formatPrice(sumToPay)} />
-      {isBasketEmpty ? <EmptyBasket /> : <BasketProducts basket={basket} isModeAdmin={isModeAdmin} />}
+      {isBasketEmpty ? <EmptyBasket /> : <BasketProducts basket={basket} isModeAdmin={isModeAdmin} handleDeleteBasketProduct={handleDeleteBasketProduct} />}
       <Footer />
     </BasketStyled>
   );

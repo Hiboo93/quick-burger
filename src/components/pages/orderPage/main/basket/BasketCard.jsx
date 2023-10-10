@@ -36,7 +36,7 @@ export default function BasketCard({
 }
 
 const BasketCardStyled = styled.div`
-cursor: ${({isModeAdmin}) => (isModeAdmin ? "pointer" : "auto")};
+  cursor: ${({ isModeAdmin }) => (isModeAdmin ? "pointer" : "auto")};
   //border: 2px solid red;
   box-sizing: border-box;
   height: 86px;
@@ -146,6 +146,11 @@ cursor: ${({isModeAdmin}) => (isModeAdmin ? "pointer" : "auto")};
       &:hover {
         .icon {
           color: ${theme.colors.dark};
+        }
+        &:active {
+          .icon {
+            color: ${theme.colors.white};
+          }
         }
       }
     }

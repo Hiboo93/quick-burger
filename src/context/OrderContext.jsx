@@ -24,9 +24,5 @@ export default createContext({
 
     basket: [],
     handleAddToBasket: () => {},
-    // isAddSelected: false,
-    // setIsAddSelected: () => {},
-
-    // isEditSelected: false,
-    // setIsEditSelected: () => {},
+    handleDeleteBasketProduct: () => {},
 });
