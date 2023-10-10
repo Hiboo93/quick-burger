@@ -1,11 +1,11 @@
 import { formatPrice } from '../../../../../utils/maths.js'
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { theme } from '../../../../../theme/index.js';
 import { MdDeleteForever } from 'react-icons/md';
 
-export default function BasketCard({ title, price, quantity, imageSource, className}) {
+export default function BasketCard({ title, price, quantity, imageSource, className, isModeAdmin }) {
   return (
-    <BasketCardStyled className={className}>
+    <BasketCardStyled className={className} isModeAdmin={isModeAdmin}>
       <div className="delete-button">
         <MdDeleteForever className="icon" />
       </div>
@@ -45,7 +45,6 @@ const BasketCardStyled = styled.div`
     box-sizing: border-box;
     height: 70px;
     
-
     img {
       padding: 5px;
       box-sizing: border-box;
@@ -56,7 +55,6 @@ const BasketCardStyled = styled.div`
   }
 
   .text-info {
-    
     box-sizing: border-box;
 
     display: grid;
@@ -135,15 +133,13 @@ const BasketCardStyled = styled.div`
       }
 
       :hover {
-        .icon {
-          color: ${theme.colors.dark};
-        }
-        :active {
+          text-decoration: underline;
+
           .icon {
-            color: ${theme.colors.white};
+            color: ${theme.colors.dark};
           }
         }
       }
     }
-  }
 `;
+
