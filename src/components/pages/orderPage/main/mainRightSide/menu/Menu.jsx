@@ -7,7 +7,7 @@ import OrderContext from "../../../../../../context/OrderContext.jsx";
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
 import EmptyMenuClient from "./EmptyMenuClient.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
-import { IMAGE_BY_DEFAULT } from "../../../../../../enums/product.jsx";
+import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../../enums/product.jsx";
 import { find } from "../../../../../../utils/array.js";
 
 
@@ -15,7 +15,7 @@ import { find } from "../../../../../../utils/array.js";
 
 export default function Menu() {
   //const [menu, setMenu] = useState(fakeMenu.MEDIUM);
-  const { menu, isModeAdmin, handleDelete, resetMenu, productSelected, setProductSelected, setIsCollapsed, setCurrentTabSelected, handleAddToBasket } =
+  const { menu, isModeAdmin, handleDelete, resetMenu, productSelected, setProductSelected, setIsCollapsed, setCurrentTabSelected, handleAddToBasket, handleDeleteBasketProduct } =
     useContext(OrderContext);
 
     // comportements (gestionnaire d'évenement ou "event handlers")
@@ -37,6 +37,8 @@ export default function Menu() {
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation()
     handleDelete(idProductToDelete)
+    handleDeleteBasketProduct(idProductToDelete)
+    idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
   }
   
   const handleAddButoon = (event, idProductToAdd) => {
