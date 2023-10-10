@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { fakeBasket } from "../fakeData/fakeBasket.js"
 import { deepClone, find, findIndex } from "../utils/array.js"
-import BasketProducts from "../components/pages/orderPage/main/basket/BasketProducts.jsx";
+
 
 
 export const useBasket = () => {
-  const [basket, setBasket] = useState(fakeBasket.SMALL);
+  const [basket, setBasket] = useState(fakeBasket.EMPTY);
 
   const handleAddToBasket = (productToAdd) => {
     // 1. copie du state
