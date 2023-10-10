@@ -2,17 +2,26 @@ import styled from "styled-components";
 import BasketCard from "./BasketCard.jsx";
 import { IMAGE_BY_DEFAULT } from "../../../../../enums/product.jsx";
 
-export default function BasketProducts({ basket }) {
+export default function BasketProducts({ basket, isModeAdmin }) {
+  const handleOnDelete = (id) => {
+    
+  }
+
   return (
     <BasketProductsStyled>
-     {basket.map((basketProduct) => 
-     <div className="basket-card" key={basketProduct.id}>
-      <BasketCard {...basketProduct} imageSource={basketProduct.imageSource ? basketProduct.imageSource : IMAGE_BY_DEFAULT} />
-     </div>
-      
-     )}
+      {basket.map((basketProduct) => (
+        <div className="basket-card" key={basketProduct.id}>
+          <BasketCard
+            {...basketProduct}
+            imageSource={
+              basketProduct.imageSource? basketProduct.imageSource : IMAGE_BY_DEFAULT}
+              onDelete={() => handleOnDelete(basketProduct.id)}
+              isModeAdmin={isModeAdmin}
+          />
+        </div>
+      ))}
     </BasketProductsStyled>
-  )
+  );
 }
 
 const BasketProductsStyled = styled.div`

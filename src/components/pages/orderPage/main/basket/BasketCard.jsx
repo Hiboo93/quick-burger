@@ -3,10 +3,18 @@ import styled, { css } from 'styled-components';
 import { theme } from '../../../../../theme/index.js';
 import { MdDeleteForever } from 'react-icons/md';
 
-export default function BasketCard({ title, price, quantity, imageSource, className, isModeAdmin }) {
+export default function BasketCard({
+  title,
+  price,
+  quantity,
+  imageSource,
+  className,
+  isModeAdmin,
+  onDelete,
+}) {
   return (
     <BasketCardStyled className={className} isModeAdmin={isModeAdmin}>
-      <div className="delete-button">
+      <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>
       <div className="image">
@@ -28,6 +36,7 @@ export default function BasketCard({ title, price, quantity, imageSource, classN
 }
 
 const BasketCardStyled = styled.div`
+cursor: ${({isModeAdmin}) => (isModeAdmin ? "pointer" : "auto")};
   //border: 2px solid red;
   box-sizing: border-box;
   height: 86px;
@@ -44,7 +53,7 @@ const BasketCardStyled = styled.div`
   .image {
     box-sizing: border-box;
     height: 70px;
-    
+
     img {
       padding: 5px;
       box-sizing: border-box;
@@ -55,6 +64,7 @@ const BasketCardStyled = styled.div`
   }
 
   .text-info {
+    user-select: none;
     box-sizing: border-box;
 
     display: grid;
@@ -108,10 +118,11 @@ const BasketCardStyled = styled.div`
     z-index: 1;
   }
 
-  :hover {
+  //hover de la card
+  &:hover {
     .delete-button {
       border: none;
-      box-sizing: border-box;
+      //box-sizing: border-box;
       position: absolute;
       top: 0;
       right: 0;
@@ -132,14 +143,12 @@ const BasketCardStyled = styled.div`
         height: ${theme.fonts.size.P3};
       }
 
-      :hover {
-          text-decoration: underline;
-
-          .icon {
-            color: ${theme.colors.dark};
-          }
+      &:hover {
+        .icon {
+          color: ${theme.colors.dark};
         }
       }
     }
+  }
 `;
 
