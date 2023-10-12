@@ -6,14 +6,17 @@ export const find = (id, array) => {
   return array.find((itemInArray) => itemInArray.id === id)
 }
 
-export const findIndex = (idWithUnknowIndex, array) => {
+export const findIndexById = (idWithUnknowIndex, array) => {
   return array.findIndex(
     (itemInArray) => itemInArray.id === idWithUnknowIndex
   );
 }
 
-export const filtre = (idOfItemToRemove, array) => {
+export const removeObjectById = (idOfItemToRemove, array) => {
   return array.filter((item) => item.id !== idOfItemToRemove)
 }
 
+export const isEmpty = (array) => {
+  return array.length === 0
+}
 

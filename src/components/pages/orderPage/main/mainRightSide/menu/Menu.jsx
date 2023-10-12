@@ -8,7 +8,7 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
 import EmptyMenuClient from "./EmptyMenuClient.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
 import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../../enums/product.jsx";
-import { find } from "../../../../../../utils/array.js";
+import { find, isEmpty } from "../../../../../../utils/array.js";
 
 
 
@@ -29,7 +29,7 @@ export default function Menu() {
     };
 
     // affichage
-  if (menu.length === 0) {
+  if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />;
     return <EmptyMenuAdmin onReset={resetMenu} />;
   }
