@@ -8,6 +8,7 @@ import SubmitMessage from './SubmitMessage.jsx';
 import { EMPTY_PRODUCT } from '../../../../../../../enums/product.jsx';
 import { getInputTextsConfig } from './inputTextConfig.jsx';
 import { useDisplaySuccessMessage } from '../../../../../../../hooks/useDisplaySuccessMessage.jsx';
+import { replaceFrenchCommaWithDot } from '../../../../../../../utils/maths.js';
 
 export default function AddForm() {
   const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
@@ -19,7 +20,9 @@ export default function AddForm() {
     const newProductToAdd = {
       ...newProduct,
       id: crypto.randomUUID(), //id: new Date().getTime(),
+      price: replaceFrenchCommaWithDot(newProduct.price)
     };
+    
     handleAdd(newProductToAdd);
     setNewProduct(EMPTY_PRODUCT);
 
