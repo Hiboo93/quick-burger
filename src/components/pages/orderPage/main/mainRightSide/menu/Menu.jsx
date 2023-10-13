@@ -8,7 +8,7 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
 import EmptyMenuClient from "./EmptyMenuClient.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
 import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../../enums/product.jsx";
-import { find, isEmpty } from "../../../../../../utils/array.js";
+import { findObjectById, isEmpty } from "../../../../../../utils/array.js";
 
 
 
@@ -24,7 +24,7 @@ export default function Menu() {
 
       setIsCollapsed(false)
       setCurrentTabSelected("edit")
-      const productClickedOn = find(idProductClicked, menu);
+      const productClickedOn = findObjectById(idProductClicked, menu);
       setProductSelected(productClickedOn);
     };
 
@@ -43,10 +43,7 @@ export default function Menu() {
   
   const handleAddButoon = (event, idProductToAdd) => {
     event.stopPropagation()
-    const productToAdd = menu.find((menuProduct) => menuProduct.id === idProductToAdd)
-    
-
-    handleAddToBasket(productToAdd)
+    handleAddToBasket(idProductToAdd)
   }
 
   return (
