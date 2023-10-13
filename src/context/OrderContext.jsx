@@ -21,6 +21,7 @@ export default createContext({
 
     ProductSelected: {},
     setProductSelected: () => {},
+    handleProductSelected: () =>{},
 
     basket: [],
     handleAddToBasket: () => {},

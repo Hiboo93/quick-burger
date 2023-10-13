@@ -1,25 +1,43 @@
 import styled from "styled-components";
 import BasketCard from "./BasketCard.jsx";
 import { IMAGE_BY_DEFAULT } from "../../../../../enums/product.jsx";
+import { findObjectById } from "../../../../../utils/array.js";
+import { useContext } from "react";
+import OrderContext from "../../../../../context/OrderContext.jsx";
+import { checkIfProductIsClicked } from "../mainRightSide/menu/helper.jsx";
 
-export default function BasketProducts({ basket, isModeAdmin, handleDeleteBasketProduct }) {
-  const handleOnDelete = (id) => {
-    handleDeleteBasketProduct(id)
-  }
+export default function BasketProducts() {
+  const { basket, isModeAdmin, handleDeleteBasketProduct, menu, handleProductSelected, productSelected } =
+    useContext(OrderContext);
 
+  const handleOnDelete = (event, id) => {
+    event.stopPropagation()
+    handleDeleteBasketProduct(id);
+  };
+  
   return (
     <BasketProductsStyled>
-      {basket.map((basketProduct) => (
-        <div className="basket-card" key={basketProduct.id}>
-          <BasketCard
-            {...basketProduct}
-            imageSource={
-              basketProduct.imageSource? basketProduct.imageSource : IMAGE_BY_DEFAULT}
-              onDelete={() => handleOnDelete(basketProduct.id)}
-              isModeAdmin={isModeAdmin}
-          />
-        </div>
-      ))}
+      {basket.map((basketProduct) => {
+        const menuProduct = findObjectById(basketProduct.id, menu);
+        return (
+          <div className="basket-card" key={basketProduct.id}>
+            <BasketCard
+              {...menuProduct}
+              imageSource={
+                menuProduct.imageSource
+                  ? menuProduct.imageSource
+                  : IMAGE_BY_DEFAULT
+              }
+              quantity={basketProduct.quantity}
+              onDelete={(event) => handleOnDelete(event, basketProduct.id)}
+              isClickable={isModeAdmin}
+              isSelected={checkIfProductIsClicked(basketProduct.id, productSelected.id)}
+
+              onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null}
+            />
+          </div>
+        );
+      })}
     </BasketProductsStyled>
   );
 }
