@@ -1,13 +1,15 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme/index.js";
 import Header from "../../../../reusable-ui/Header.jsx";
-import { calculateSumToPay, formatPrice } from "../../../../../utils/maths.js";
+import { formatPrice } from "../../../../../utils/maths.js";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext.jsx";
+import { calculateSumToPay } from "./helper.jsx";
 
 export default function Total() {
   const { basket, menu } = useContext(OrderContext);
-  const sumToPay = calculateSumToPay(basket, menu)
+
+  const sumToPay = calculateSumToPay(basket, menu);
 
   return (
     <Header>
@@ -30,3 +32,5 @@ const TotalStyled = styled.div`
   font-weight: ${theme.fonts.weights.bold};
   letter-spacing: 2px;
 `;
+
+

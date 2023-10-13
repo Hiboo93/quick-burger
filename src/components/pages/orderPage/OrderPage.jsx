@@ -9,6 +9,7 @@ import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
 //import { deepClone } from "../../../utils/array.js";
 import { useMenu } from "../../../hooks/useMenu.jsx";
 import { useBasket } from "../../../hooks/useBasket.jsx";
+import { findObjectById } from "../../../utils/array.js";
 
 function OrderPage() {
   // state
@@ -17,11 +18,15 @@ function OrderPage() {
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
-  
   const {menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
   const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
 
-  // comportements (gestionnaire de state ou "state handlers")
+ const handleProductSelected = (idProductClicked) => {
+  const productClickedOn = findObjectById(idProductClicked, menu);
+  setIsCollapsed(false)
+  setCurrentTabSelected("edit")
+  setProductSelected(productClickedOn);
+ }
 
   const orderContextValue = {
     isModeAdmin: isModeAdmin,
@@ -42,6 +47,7 @@ function OrderPage() {
     basket: basket,
     handleAddToBasket: handleAddToBasket,
     handleDeleteBasketProduct: handleDeleteBasketProduct,
+    handleProductSelected: handleProductSelected,
   }
 
   return (

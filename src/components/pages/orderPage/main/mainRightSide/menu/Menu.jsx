@@ -8,58 +8,53 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
 import EmptyMenuClient from "./EmptyMenuClient.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
 import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../../enums/product.jsx";
-import { findObjectById, isEmpty } from "../../../../../../utils/array.js";
-
-
-
+import { isEmpty } from "../../../../../../utils/array.js";
 
 export default function Menu() {
   //const [menu, setMenu] = useState(fakeMenu.MEDIUM);
-  const { menu, isModeAdmin, handleDelete, resetMenu, productSelected, setProductSelected, setIsCollapsed, setCurrentTabSelected, handleAddToBasket, handleDeleteBasketProduct } =
-    useContext(OrderContext);
+  const {
+    menu,
+    isModeAdmin,
+    handleDelete,
+    resetMenu,
+    productSelected,
+    setProductSelected,
+    handleAddToBasket,
+    handleDeleteBasketProduct,
+    handleProductSelected,
+  } = useContext(OrderContext);
 
-    // comportements (gestionnaire d'évenement ou "event handlers")
-    const handleClick = (idProductClicked) => {
-      if (!isModeAdmin) return
+  // comportements (gestionnaire d'évenement ou "event handlers")
+  const handleCardDelete = (event, idProductToDelete) => {
+    event.stopPropagation();
+    handleDelete(idProductToDelete);
+    handleDeleteBasketProduct(idProductToDelete);
+    idProductToDelete === productSelected.id &&
+      setProductSelected(EMPTY_PRODUCT);
+  };
 
-      setIsCollapsed(false)
-      setCurrentTabSelected("edit")
-      const productClickedOn = findObjectById(idProductClicked, menu);
-      setProductSelected(productClickedOn);
-    };
+  const handleAddButoon = (event, idProductToAdd) => {
+    event.stopPropagation();
+    handleAddToBasket(idProductToAdd);
+  };
 
-    // affichage
   if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />;
     return <EmptyMenuAdmin onReset={resetMenu} />;
   }
 
-  const handleCardDelete = (event, idProductToDelete) => {
-    event.stopPropagation()
-    handleDelete(idProductToDelete)
-    handleDeleteBasketProduct(idProductToDelete)
-    idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
-  }
-  
-  const handleAddButoon = (event, idProductToAdd) => {
-    event.stopPropagation()
-    handleAddToBasket(idProductToAdd)
-  }
-
   return (
     <MenuStyled className="menu">
-      {menu.map(({id, title, imageSource, price}) => {
+      {menu.map(({ id, title, imageSource, price }) => {
         return (
           <Card
             key={id}
             title={title}
-            imageSource={
-              imageSource ? imageSource : IMAGE_BY_DEFAULT
-            }
+            imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
             leftDescription={formatPrice(price)}
             hasDeletButton={isModeAdmin}
             onDelete={(event) => handleCardDelete(event, id)}
-            onClick={() => handleClick(id)}
+            onClick={isModeAdmin ? () => handleProductSelected(id) : null}
             isHoverable={isModeAdmin}
             isSelected={checkIfProductIsClicked(id, productSelected.id)}
             onAdd={(event) => handleAddButoon(event, id)}
