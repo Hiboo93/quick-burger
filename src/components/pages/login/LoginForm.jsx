@@ -6,6 +6,7 @@ import styled from "styled-components"
 import TextInput from "../../reusable-ui/TextInput.jsx";
 import Button from "../../reusable-ui/Button.jsx"
 import { theme } from "../../../theme/index.js";
+import { createUser } from "../../../api/user.js";
 
 function LoginForm() {
   const [name, setName] = useState("");
@@ -13,6 +14,8 @@ function LoginForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    createUser(name)
+
     setName("");
     navigate(`/order/${name}`);
   };

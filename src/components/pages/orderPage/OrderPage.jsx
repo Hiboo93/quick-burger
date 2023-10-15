@@ -10,6 +10,7 @@ import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
 import { useMenu } from "../../../hooks/useMenu.jsx";
 import { useBasket } from "../../../hooks/useBasket.jsx";
 import { findObjectById } from "../../../utils/array.js";
+import { getUser } from "../../../api/user.js";
 
 function OrderPage() {
   // state
@@ -49,6 +50,10 @@ function OrderPage() {
     handleDeleteBasketProduct: handleDeleteBasketProduct,
     handleProductSelected: handleProductSelected,
   }
+
+  // appel API pour récupérer l'utilisateur  "Alexi"
+  getUser("Jordan")
+  
 
   return (
     <OrderContext.Provider value={orderContextValue}>
