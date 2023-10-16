@@ -3,10 +3,8 @@ import { fakeMenu } from "../fakeData/fakeMenu.js";
 import { deepClone } from "../utils/array.js";
 import { syncBothMenus } from "../api/product.js";
 
-
-
 export const useMenu = () => {
-    const [menu, setMenu] = useState(fakeMenu.LARGE);
+    const [menu, setMenu] = useState();
 
     const handleAdd = (newProduct, username) => {
         // 1. copie du tableau

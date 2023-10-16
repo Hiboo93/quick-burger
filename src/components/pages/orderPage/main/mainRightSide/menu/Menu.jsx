@@ -9,6 +9,7 @@ import EmptyMenuClient from "./EmptyMenuClient.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
 import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../../enums/product.jsx";
 import { isEmpty } from "../../../../../../utils/array.js";
+import Loader from "./Loader.jsx";
 
 export default function Menu() {
   //const [menu, setMenu] = useState(fakeMenu.MEDIUM);
@@ -38,6 +39,10 @@ export default function Menu() {
     event.stopPropagation();
     handleAddToBasket(idProductToAdd);
   };
+
+  if (menu === undefined) {
+    return <Loader/>
+  }
 
   if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />;
