@@ -6,22 +6,22 @@ import styled from "styled-components"
 import TextInput from "../../reusable-ui/TextInput.jsx";
 import Button from "../../reusable-ui/Button.jsx"
 import { theme } from "../../../theme/index.js";
-import { createUser } from "../../../api/user.js";
+import { authenticateUser } from "../../../api/user.js";
+//import { createUser, getUser } from "../../../api/user.js";
 
 function LoginForm() {
-  const [name, setName] = useState("");
+  const [userName, setUserName] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    createUser(name)
-
-    setName("");
-    navigate(`/order/${name}`);
+    authenticateUser(userName)
+    setUserName("");
+    navigate(`/order/${userName}`);
   };
 
   const handleChange = (event) => {
-    setName(event.target.value);
+    setUserName(event.target.value);
   };
 
   return (
@@ -33,7 +33,7 @@ function LoginForm() {
       </div>
       <div>
         <TextInput
-          value={name}
+          value={userName}
           onChange={handleChange}
           placeholder={"Entrez votre prénom"}
           required

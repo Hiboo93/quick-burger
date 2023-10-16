@@ -8,19 +8,26 @@ export const getUser = async (idUser) => {
 
   const docSnapShot = await getDoc(docRef);
   if (docSnapShot.exists()) {
-    const userReceived = docSnapShot.data()
-    return userReceived
+    const userReceived = docSnapShot.data();
+    return userReceived;
   }
 };
 
-
 export const createUser = (userId) => {
-    const docRef = doc(db, "users", userId);
+  const docRef = doc(db, "users", userId);
 
-    const nourriture = {
-        username: userId,
-        menu: fakeMenu.LARGE
-    }
+  const nourriture = {
+    username: userId,
+    menu: fakeMenu.SMALL,
+  };
 
-  setDoc(docRef, nourriture)
-}
+  setDoc(docRef, nourriture);
+};
+
+export const authenticateUser = async (userId) => {
+  const existingUser = await getUser(userId);
+
+  if (!existingUser) {
+    createUser(userId);
+  }
+};
