@@ -13,6 +13,7 @@ import { isEmpty } from "../../../../../../utils/array.js";
 export default function Menu() {
   //const [menu, setMenu] = useState(fakeMenu.MEDIUM);
   const {
+    username,
     menu,
     isModeAdmin,
     handleDelete,
@@ -27,7 +28,7 @@ export default function Menu() {
   // comportements (gestionnaire d'évenement ou "event handlers")
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation();
-    handleDelete(idProductToDelete);
+    handleDelete(idProductToDelete, username);
     handleDeleteBasketProduct(idProductToDelete);
     idProductToDelete === productSelected.id &&
       setProductSelected(EMPTY_PRODUCT);

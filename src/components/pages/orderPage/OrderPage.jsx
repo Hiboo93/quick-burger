@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { theme } from "../../../theme/index.js";
 import Navbar from "./navbar/Navbar.jsx";
 import Main from "./main/Main.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import OrderContext from "../../../context/OrderContext.jsx";
 import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
 import { useMenu } from "../../../hooks/useMenu.jsx";
@@ -10,25 +10,35 @@ import { useBasket } from "../../../hooks/useBasket.jsx";
 import { findObjectById } from "../../../utils/array.js";
 import { getUser } from "../../../api/user.js";
 import { useParams } from "react-router-dom";
+import { getMenu } from "../../../api/product.js";
 
 function OrderPage() {
   // state
-  const [isModeAdmin, setisModeAdmin] = useState(false)
+  const [isModeAdmin, setisModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [currentTabSelected, setCurrentTabSelected] = useState("add")
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
-  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
-  const {menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
-  const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
+  const [currentTabSelected, setCurrentTabSelected] = useState("add");
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
+  const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } =
+    useMenu();
+  const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket();
   const { username } = useParams();
 
+  const handleProductSelected = (idProductClicked) => {
+    const productClickedOn = findObjectById(idProductClicked, menu);
+    setIsCollapsed(false);
+    setCurrentTabSelected("edit");
+    setProductSelected(productClickedOn);
+  };
 
- const handleProductSelected = (idProductClicked) => {
-  const productClickedOn = findObjectById(idProductClicked, menu);
-  setIsCollapsed(false)
-  setCurrentTabSelected("edit")
-  setProductSelected(productClickedOn);
- }
+  const intialiseMenu = async () => {
+    const menuReceived = await getMenu(username);
+    setMenu(menuReceived);
+  };
+
+  useEffect(() => {
+    intialiseMenu();
+  }, []);
 
   const orderContextValue = {
     username: username,
@@ -51,11 +61,10 @@ function OrderPage() {
     handleAddToBasket: handleAddToBasket,
     handleDeleteBasketProduct: handleDeleteBasketProduct,
     handleProductSelected: handleProductSelected,
-  }
+  };
 
   // appel API pour récupérer l'utilisateur  "Alexi"
-  getUser("Jordan")
-  
+  getUser("Jordan");
 
   return (
     <OrderContext.Provider value={orderContextValue}>
