@@ -30,14 +30,14 @@ export default function Menu() {
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation();
     handleDelete(idProductToDelete, username);
-    handleDeleteBasketProduct(idProductToDelete);
+    handleDeleteBasketProduct(idProductToDelete, username);
     idProductToDelete === productSelected.id &&
       setProductSelected(EMPTY_PRODUCT);
   };
 
   const handleAddButoon = (event, idProductToAdd) => {
     event.stopPropagation();
-    handleAddToBasket(idProductToAdd);
+    handleAddToBasket(idProductToAdd, username);
   };
 
   if (menu === undefined) {

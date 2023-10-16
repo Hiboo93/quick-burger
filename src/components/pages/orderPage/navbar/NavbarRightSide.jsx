@@ -5,7 +5,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useContext } from 'react';
 import { FaUserSecret } from 'react-icons/fa'
 import ToggleButton from '../../../reusable-ui/ToggleButton.jsx';
-import { theme } from '../../../../theme/index.js';
 import OrderContext from '../../../../context/OrderContext.jsx';
 import ToastAdmin from './ToastAdmin.jsx';
 

@@ -8,7 +8,7 @@ import { EMPTY_PRODUCT } from "../../../enums/product.jsx";
 import { useMenu } from "../../../hooks/useMenu.jsx";
 import { useBasket } from "../../../hooks/useBasket.jsx";
 import { findObjectById } from "../../../utils/array.js";
-import { getUser } from "../../../api/user.js";
+//import { getUser } from "../../../api/user.js";
 import { useParams } from "react-router-dom";
 import { getMenu } from "../../../api/product.js";
 
@@ -64,7 +64,7 @@ function OrderPage() {
   };
 
   // appel API pour récupérer l'utilisateur  "Alexi"
-  getUser("Jordan");
+  //getUser("Jordan");
 
   return (
     <OrderContext.Provider value={orderContextValue}>

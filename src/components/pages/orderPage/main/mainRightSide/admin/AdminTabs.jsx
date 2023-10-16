@@ -22,7 +22,7 @@ export default function AdminTabs() {
     setCurrentTabSelected(tabSelected); //reactualise l'onglet selectionné
   };
 
-  const tabs = tabsConfig;
+  const tabs = tabsConfig();
   // affichage
   return (
     <AdminTabsStyled>

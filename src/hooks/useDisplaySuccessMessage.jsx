@@ -1,14 +1,14 @@
 import { useState } from "react";
 
 export const useDisplaySuccessMessage = () => {
-    const [isSubmited, setIsSubmited] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     const displaySuccessMessage = () => {
-        setIsSubmited(true);
+        setIsSubmitted(true);
         setTimeout(() => {
-        setIsSubmited(false);
+        setIsSubmitted(false);
         }, 3000);
     };
 
-    return {isSubmited, displaySuccessMessage}
+    return {isSubmitted, displaySuccessMessage}
 }

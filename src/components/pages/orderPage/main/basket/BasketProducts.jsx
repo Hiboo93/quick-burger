@@ -7,14 +7,20 @@ import OrderContext from "../../../../../context/OrderContext.jsx";
 import { checkIfProductIsClicked } from "../mainRightSide/menu/helper.jsx";
 
 export default function BasketProducts() {
-  const { basket, isModeAdmin, handleDeleteBasketProduct, menu, handleProductSelected, productSelected } =
-    useContext(OrderContext);
+  const {
+    basket,
+    isModeAdmin,
+    handleDeleteBasketProduct,
+    menu,
+    handleProductSelected,
+    productSelected,
+  } = useContext(OrderContext);
 
   const handleOnDelete = (event, id) => {
-    event.stopPropagation()
+    event.stopPropagation();
     handleDeleteBasketProduct(id);
   };
-  
+
   return (
     <BasketProductsStyled>
       {basket.map((basketProduct) => {
@@ -31,9 +37,15 @@ export default function BasketProducts() {
               quantity={basketProduct.quantity}
               onDelete={(event) => handleOnDelete(event, basketProduct.id)}
               isClickable={isModeAdmin}
-              isSelected={checkIfProductIsClicked(basketProduct.id, productSelected.id)}
-
-              onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null}
+              isSelected={checkIfProductIsClicked(
+                basketProduct.id,
+                productSelected.id
+              )}
+              onClick={
+                isModeAdmin
+                  ? () => handleProductSelected(basketProduct.id)
+                  : null
+              }
             />
           </div>
         );
