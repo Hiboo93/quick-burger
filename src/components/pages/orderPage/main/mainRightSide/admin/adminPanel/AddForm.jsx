@@ -11,7 +11,7 @@ import { useDisplaySuccessMessage } from '../../../../../../../hooks/useDisplayS
 import { replaceFrenchCommaWithDot } from '../../../../../../../utils/maths.js';
 
 export default function AddForm() {
-  const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
+  const { username, handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
   const { isSubmited, displaySuccessMessage} = useDisplaySuccessMessage()
   //const [isSubmited, setIsSubmited] = useState(false); useState intégré au custom hooks useDisplaySuccesMessage
 
@@ -23,7 +23,7 @@ export default function AddForm() {
       price: replaceFrenchCommaWithDot(newProduct.price)
     };
     
-    handleAdd(newProductToAdd);
+    handleAdd(newProductToAdd, username);
     setNewProduct(EMPTY_PRODUCT);
 
     displaySuccessMessage();
@@ -35,13 +35,6 @@ export default function AddForm() {
     setNewProduct({ ...newProduct, [name]: newValue });
   };
 
-  //fonction displaySuccesMessage intégré au custom hooks useDisplaySuccessMessage
-  // const displaySuccessMessage = () => {
-  //   setIsSubmited(true);
-  //   setTimeout(() => {
-  //     setIsSubmited(false);
-  //   }, 3000);
-  // };
 
   const inputTexts = getInputTextsConfig(newProduct)
 

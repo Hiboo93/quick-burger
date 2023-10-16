@@ -9,6 +9,7 @@ import { useMenu } from "../../../hooks/useMenu.jsx";
 import { useBasket } from "../../../hooks/useBasket.jsx";
 import { findObjectById } from "../../../utils/array.js";
 import { getUser } from "../../../api/user.js";
+import { useParams } from "react-router-dom";
 
 function OrderPage() {
   // state
@@ -19,6 +20,8 @@ function OrderPage() {
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const {menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
   const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
+  const { username } = useParams();
+
 
  const handleProductSelected = (idProductClicked) => {
   const productClickedOn = findObjectById(idProductClicked, menu);
@@ -28,6 +31,7 @@ function OrderPage() {
  }
 
   const orderContextValue = {
+    username: username,
     isModeAdmin: isModeAdmin,
     setisModeAdmin: setisModeAdmin,
     isCollapsed: isCollapsed,

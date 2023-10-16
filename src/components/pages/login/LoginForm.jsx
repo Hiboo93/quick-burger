@@ -9,9 +9,6 @@ import { theme } from "../../../theme/index.js";
 import { authenticateUser } from "../../../api/user.js";
 import Welcome from "./Welcome.jsx";
 
-
-//import { createUser, getUser } from "../../../api/user.js";
-
 function LoginForm() {
   const [userName, setUserName] = useState("");
   const navigate = useNavigate();
