@@ -32,12 +32,13 @@ export const useBasket = () => {
     const newBasketProduct = { id: idProductToAdd, quantity: 1 };
     const newBasket = [newBasketProduct, ...basketCopy];
     setBasket(newBasket);
-    setLocalStorage(username, newBasket )
+    setLocalStorage(username, newBasket)
   }
 
-  const handleDeleteBasketProduct = (idBasketProduct) => {
+  const handleDeleteBasketProduct = (idBasketProduct, username) => {
     const basketUpdated = removeObjectById(idBasketProduct, basket)
     setBasket(basketUpdated)
+    setLocalStorage(username, basketUpdated)
   }
 
   return { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct };

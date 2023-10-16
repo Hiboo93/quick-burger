@@ -42,13 +42,13 @@ function OrderPage() {
     if (!basketReceived) setBasket(basketReceived)
   }
 
-
-  useEffect(() => {
-    intialiseMenu();
-  }, []);
-
-  useEffect(() => {
+  const intialiseUserSession = async () => {
+    await intialiseMenu();
     intialiseBasket();
+  }
+
+  useEffect(() => {
+    intialiseUserSession()
   }, []);
 
   const orderContextValue = {
