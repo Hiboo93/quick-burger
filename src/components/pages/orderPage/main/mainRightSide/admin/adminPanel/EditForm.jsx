@@ -8,7 +8,7 @@ import { theme } from '../../../../../../../theme/index.js'
 
 
 export default function EditForm() {
-  const { productSelected, setProductSelected, handleEdit } =
+  const {username, productSelected, setProductSelected, handleEdit } =
     useContext(OrderContext);
 
   const inputTexts = getInputTextsConfig(productSelected);
@@ -23,7 +23,7 @@ export default function EditForm() {
 
     setProductSelected(productBeingUpdated); // cette ligne update le formulaire
     // state handler du menu
-    handleEdit(productBeingUpdated); // cette ligne update le menu
+    handleEdit(productBeingUpdated, username); // cette ligne update le menu
   };
   return (
     <EditFormStyled>

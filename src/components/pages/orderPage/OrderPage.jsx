@@ -14,9 +14,9 @@ import { getMenu } from "../../../api/product.js";
 
 function OrderPage() {
   // state
-  const [isModeAdmin, setisModeAdmin] = useState(false);
+  const [isModeAdmin, setisModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [currentTabSelected, setCurrentTabSelected] = useState("add");
+  const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
   const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } =
