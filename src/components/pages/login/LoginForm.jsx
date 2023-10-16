@@ -7,6 +7,9 @@ import TextInput from "../../reusable-ui/TextInput.jsx";
 import Button from "../../reusable-ui/Button.jsx"
 import { theme } from "../../../theme/index.js";
 import { authenticateUser } from "../../../api/user.js";
+import Welcome from "./Welcome.jsx";
+
+
 //import { createUser, getUser } from "../../../api/user.js";
 
 function LoginForm() {
@@ -26,11 +29,7 @@ function LoginForm() {
 
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-      <div>
-        <h1>Bienvenue chez-nous !</h1>
-        <hr />
-        <h2>Connectez-vous</h2>
-      </div>
+      <Welcome/>
       <div>
         <TextInput
           value={userName}
