@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Total from "./Total.jsx";
-import Footer from "./Footer.jsx";
+import BasketFooter from "./BasketFooter.jsx";
 import { theme } from "../../../../../theme/index.js";
 import BasketBody from "./basketBody/BasketBody.jsx";
 
@@ -9,7 +9,7 @@ export default function Basket() {
     <BasketStyled>
       <Total />
       <BasketBody/>
-      <Footer />
+      <BasketFooter />
     </BasketStyled>
   );
 }
