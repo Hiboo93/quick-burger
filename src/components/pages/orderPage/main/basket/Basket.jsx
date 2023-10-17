@@ -1,14 +1,15 @@
 import styled from "styled-components";
-import Total from "./Total.jsx";
+import BasketHeader from "./basketHeader/BasketHeader.jsx";
 import BasketFooter from "./BasketFooter.jsx";
 import { theme } from "../../../../../theme/index.js";
 import BasketBody from "./basketBody/BasketBody.jsx";
 
+
 export default function Basket() {
   return (
     <BasketStyled>
-      <Total />
-      <BasketBody/>
+      <BasketHeader />
+      <BasketBody />
       <BasketFooter />
     </BasketStyled>
   );
@@ -33,6 +34,3 @@ const BasketStyled = styled.div`
     bottom: 0;
   }
 `;
-
-
-

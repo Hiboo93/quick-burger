@@ -1,7 +1,7 @@
-import { formatPrice } from '../../../../../utils/maths.js'
-import styled, { css } from 'styled-components';
-import { theme } from '../../../../../theme/index.js';
-import { MdDeleteForever } from 'react-icons/md';
+import { formatPrice } from "../../../../../../utils/maths.js";
+import styled, { css } from "styled-components";
+import { theme } from "../../../../../../theme/index.js";
+import { MdDeleteForever } from "react-icons/md";
 
 export default function BasketCard({
   title,
@@ -163,14 +163,14 @@ const BasketCardStyled = styled.div`
     }
   }
 
-${({ isClickable, isSelected }) => isClickable && isSelected && selectedStyled}
+  ${({ isClickable, isSelected }) =>
+    isClickable && isSelected && selectedStyled}
 `;
 
 const selectedStyled = css`
-background: ${theme.colors.primary};
-.price,
-.quantity {
-  color: ${theme.colors.white};
-}
-`
-
+  background: ${theme.colors.primary};
+  .price,
+  .quantity {
+    color: ${theme.colors.white};
+  }
+`;
