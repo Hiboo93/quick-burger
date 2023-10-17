@@ -6,6 +6,7 @@ import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext.jsx";
 import { checkIfProductIsClicked } from "../mainRightSide/menu/helper.jsx";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { basketAnimation } from "../../../../../theme/animations"
 
 export default function BasketProducts() {
   const {
@@ -29,7 +30,7 @@ export default function BasketProducts() {
         {basket.map((basketProduct) => {
           const menuProduct = findObjectById(basketProduct.id, menu);
           return (
-            <CSSTransition appear={true} classNames={"animation-basket"} key={basketProduct.id} timeout={{entrer: 5000, exit: 5000}}>
+            <CSSTransition appear={true} classNames={"animation-basket"} key={basketProduct.id} timeout={{entrer: 500, exit: 500}}>
               <div className="card-container" >
                 <BasketCard
                   {...menuProduct}
@@ -61,57 +62,14 @@ export default function BasketProducts() {
   );
 }
 
+
 const BasketProductsStyled = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
 
-  .animation-basket-appear {
-    .card {
-      background: orange;
-      transition: 5s;
-      transform: translateX(350px);
-    }
-  }
   
-  .animation-basket-enter {
-    .card {
-      background: orange;
-      transition: 5s;
-      transform: translateX(350px);
-    }
-  }
-
-  .animation-basket-enter-active {
-    .card {
-      transition: 1s;
-      transform: translateX(0px);
-    }
-  }
-  .animation-basket-enter-done {
-    .card {
-      transition: 1s;
-    }
-  }
-
-  .animation-basket-exit {
-    .card {
-      transform: translateX(0px);
-    }
-  }
-  .animation-basket-exit-active {
-    .card {
-      background: red;
-      transition: 1s;
-      transform: translateX(350px);
-    }
-  }
-  .animation-basket-exit-done {
-    .card {
-      background: lightblue;
-    }
-  }
 
   .card-container {
     margin: 10px 16px;
@@ -124,4 +82,6 @@ const BasketProductsStyled = styled.div`
       //margin-bottom: 20px;
     }
   }
+
+  ${basketAnimation}
 `;
