@@ -29,8 +29,8 @@ export default function BasketProducts() {
         {basket.map((basketProduct) => {
           const menuProduct = findObjectById(basketProduct.id, menu);
           return (
-            <CSSTransition appear={true} classNames={"container-transition"} key={basketProduct.id} timeout={{entrer: 5000, exit: 5000}}>
-              <div className="basket-card" >
+            <CSSTransition appear={true} classNames={"animation-basket"} key={basketProduct.id} timeout={{entrer: 5000, exit: 5000}}>
+              <div className="card-container" >
                 <BasketCard
                   {...menuProduct}
                   imageSource={
@@ -50,7 +50,7 @@ export default function BasketProducts() {
                       ? () => handleProductSelected(basketProduct.id)
                       : null
                   }
-                  className={"item-trans"}
+                  className={"card"}
                 />
               </div>
             </CSSTransition>
@@ -67,53 +67,53 @@ const BasketProductsStyled = styled.div`
   flex-direction: column;
   overflow-y: scroll;
 
-  .container-transition-appear {
-    .item-trans {
+  .animation-basket-appear {
+    .card {
       background: orange;
       transition: 5s;
       transform: translateX(350px);
     }
   }
   
-  .container-transition-enter {
-    .item-trans {
+  .animation-basket-enter {
+    .card {
       background: orange;
       transition: 5s;
       transform: translateX(350px);
     }
   }
 
-  .container-transition-enter-active {
-    .item-trans {
+  .animation-basket-enter-active {
+    .card {
       transition: 1s;
       transform: translateX(0px);
     }
   }
-  .container-transition-enter-done {
-    .item-trans {
+  .animation-basket-enter-done {
+    .card {
       transition: 1s;
     }
   }
 
-  .container-transition-exit {
-    .item-trans {
+  .animation-basket-exit {
+    .card {
       transform: translateX(0px);
     }
   }
-  .container-transition-exit-active {
-    .item-trans {
+  .animation-basket-exit-active {
+    .card {
       background: red;
       transition: 1s;
       transform: translateX(350px);
     }
   }
-  .container-transition-exit-done {
-    .item-trans {
+  .animation-basket-exit-done {
+    .card {
       background: lightblue;
     }
   }
 
-  .basket-card {
+  .card-container {
     margin: 10px 16px;
     height: 86px;
     box-sizing: border-box;

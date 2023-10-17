@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { theme } from '../../../../../theme/index.js';
 import { BASKET_MESSAGE } from '../../../../../enums/product.jsx';
 
-
 export default function EmptyBasket({ isLoading }) {
   return (
     <BasketBodyStyled>
