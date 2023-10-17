@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <Header>
         <FooterStyled>
-            <span>Codé avec React js</span> 
+            <span>Codé avec React.js</span> 
         </FooterStyled>
     </Header>
   )
@@ -20,7 +20,7 @@ const FooterStyled = styled.div`
 
   span {
     font-size: ${theme.fonts.size.P2};
-    font-family: ${theme.fonts.size.P2};
+    font-family: ${theme.fonts.family.stylish};
     font-weight: ${theme.fonts.weights.bold};
     color: ${theme.colors.white};
   }

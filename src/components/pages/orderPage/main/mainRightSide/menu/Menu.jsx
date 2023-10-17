@@ -9,10 +9,12 @@ import EmptyMenuClient from "./EmptyMenuClient.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
 import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../../enums/product.jsx";
 import { isEmpty } from "../../../../../../utils/array.js";
+import Loader from "./Loader.jsx";
 
 export default function Menu() {
   //const [menu, setMenu] = useState(fakeMenu.MEDIUM);
   const {
+    username,
     menu,
     isModeAdmin,
     handleDelete,
@@ -27,20 +29,24 @@ export default function Menu() {
   // comportements (gestionnaire d'évenement ou "event handlers")
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation();
-    handleDelete(idProductToDelete);
-    handleDeleteBasketProduct(idProductToDelete);
+    handleDelete(idProductToDelete, username);
+    handleDeleteBasketProduct(idProductToDelete, username);
     idProductToDelete === productSelected.id &&
       setProductSelected(EMPTY_PRODUCT);
   };
 
   const handleAddButoon = (event, idProductToAdd) => {
     event.stopPropagation();
-    handleAddToBasket(idProductToAdd);
+    handleAddToBasket(idProductToAdd, username);
   };
+
+  if (menu === undefined) {
+    return <Loader/>
+  }
 
   if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />;
-    return <EmptyMenuAdmin onReset={resetMenu} />;
+    return <EmptyMenuAdmin onReset={() => resetMenu(username)} />;
   }
 
   return (

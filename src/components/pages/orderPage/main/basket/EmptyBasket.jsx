@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 import { theme } from '../../../../../theme/index.js';
+import { BASKET_MESSAGE } from '../../../../../enums/product.jsx';
 
 
-export default function EmptyBasket() {
+export default function EmptyBasket({ isLoading }) {
   return (
     <BasketBodyStyled>
-      <span className='empty-message'>Votre commande est vide</span>
+      <span className="empty-message">
+        {isLoading ? BASKET_MESSAGE.LOADING : BASKET_MESSAGE.EMPTY}
+      </span>
     </BasketBodyStyled>
-  )
+  );
 }
 
 const BasketBodyStyled = styled.div`
