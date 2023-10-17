@@ -41,7 +41,6 @@ const CasinoEffectStyled = styled.div`
     }
 
     .count-animated-exit-active {
-        background: green;
         transform: translateY(-100%);
         transition: 300ms;
     }

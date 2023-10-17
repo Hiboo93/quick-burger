@@ -29,7 +29,7 @@ export default function BasketProducts() {
         {basket.map((basketProduct) => {
           const menuProduct = findObjectById(basketProduct.id, menu);
           return (
-            <CSSTransition appear={true} classNames={"abricot"} key={basketProduct.id} timeout={{entrer: 5000, exit: 5000}}>
+            <CSSTransition appear={true} classNames={"container-transition"} key={basketProduct.id} timeout={{entrer: 5000, exit: 5000}}>
               <div className="basket-card" >
                 <BasketCard
                   {...menuProduct}
@@ -50,7 +50,7 @@ export default function BasketProducts() {
                       ? () => handleProductSelected(basketProduct.id)
                       : null
                   }
-                  className={"pomme"}
+                  className={"item-trans"}
                 />
               </div>
             </CSSTransition>
@@ -67,48 +67,48 @@ const BasketProductsStyled = styled.div`
   flex-direction: column;
   overflow-y: scroll;
 
-  .abricot-appear {
-    .pomme {
+  .container-transition-appear {
+    .item-trans {
       background: orange;
       transition: 5s;
       transform: translateX(350px);
     }
   }
   
-  .abricot-enter {
-    .pomme {
+  .container-transition-enter {
+    .item-trans {
       background: orange;
       transition: 5s;
       transform: translateX(350px);
     }
   }
 
-  .abricot-enter-active {
-    .pomme {
+  .container-transition-enter-active {
+    .item-trans {
       transition: 1s;
       transform: translateX(0px);
     }
   }
-  .abricot-enter-done {
-    .pomme {
+  .container-transition-enter-done {
+    .item-trans {
       transition: 1s;
     }
   }
 
-  .abricot-exit {
-    .pomme {
+  .container-transition-exit {
+    .item-trans {
       transform: translateX(0px);
     }
   }
-  .abricot-exit-active {
-    .pomme {
+  .container-transition-exit-active {
+    .item-trans {
       background: red;
       transition: 1s;
       transform: translateX(350px);
     }
   }
-  .abricot-exit-done {
-    .pomme {
+  .container-transition-exit-done {
+    .item-trans {
       background: lightblue;
     }
   }
