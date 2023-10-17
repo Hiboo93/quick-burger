@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import BasketCard from "./BasketCard.jsx";
-import { IMAGE_BY_DEFAULT } from "../../../../../enums/product.jsx";
-import { findObjectById } from "../../../../../utils/array.js";
+import BasketCard from "../BasketCard.jsx";
+import { IMAGE_BY_DEFAULT } from "../../../../../../enums/product.jsx";
+import { findObjectById } from "../../../../../../utils/array.js";
 import { useContext } from "react";
-import OrderContext from "../../../../../context/OrderContext.jsx";
-import { checkIfProductIsClicked } from "../mainRightSide/menu/helper.jsx";
+import OrderContext from "../../../../../../context/OrderContext.jsx";
+import { checkIfProductIsClicked } from "../../mainRightSide/menu/helper.jsx";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { basketAnimation } from "../../../../../theme/animations"
+import { basketAnimation } from "../../../../../../theme/animations.js";
 
 export default function BasketProducts() {
   const {
@@ -30,8 +30,13 @@ export default function BasketProducts() {
         {basket.map((basketProduct) => {
           const menuProduct = findObjectById(basketProduct.id, menu);
           return (
-            <CSSTransition appear={true} classNames={"animation-basket"} key={basketProduct.id} timeout={{entrer: 5000, exit: 5000}}>
-              <div className="card-container" >
+            <CSSTransition
+              appear={true}
+              classNames={"animation-basket"}
+              key={basketProduct.id}
+              timeout={{ entrer: 5000, exit: 5000 }}
+            >
+              <div className="card-container">
                 <BasketCard
                   {...menuProduct}
                   imageSource={
@@ -62,14 +67,11 @@ export default function BasketProducts() {
   );
 }
 
-
 const BasketProductsStyled = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-
-  
 
   .card-container {
     margin: 10px 16px;
