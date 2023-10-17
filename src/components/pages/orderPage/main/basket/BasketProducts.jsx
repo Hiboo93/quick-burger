@@ -30,7 +30,7 @@ export default function BasketProducts() {
         {basket.map((basketProduct) => {
           const menuProduct = findObjectById(basketProduct.id, menu);
           return (
-            <CSSTransition appear={true} classNames={"animation-basket"} key={basketProduct.id} timeout={{entrer: 500, exit: 500}}>
+            <CSSTransition appear={true} classNames={"animation-basket"} key={basketProduct.id} timeout={{entrer: 5000, exit: 5000}}>
               <div className="card-container" >
                 <BasketCard
                   {...menuProduct}

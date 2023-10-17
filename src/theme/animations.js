@@ -74,3 +74,26 @@ export const basketAnimation = css`
     }
   }
 `;
+
+export const menuAnimation = css`
+    .animation-menu-enter {
+        opacity: 0.01;
+        transform: translateX(-120px);
+        &.animation-menu-enter-active {
+            opacity: 1;
+            transform: translateX(0);
+            transition: all 300ms ease-out;
+        }
+    }
+    .animation-menu-enter-done {}
+
+    .animation-menu-exit {
+        opacity: 1;
+        transform: translateY(0);
+        &.animation-menu-exit-active {
+            opacity: 0.01;
+            transform: 300ms ease-out;
+        }
+    }
+    .animation-menu-exit-done {}
+`

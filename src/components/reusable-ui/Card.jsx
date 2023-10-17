@@ -165,10 +165,10 @@ const CardStyled = styled.div`
 `;
 
 const hoverableStyle = css`
-  :hover {
+  &:hover {
     transform: scale(1.05);
     transition: ease-out 0.4s;
-    //box-shadow: ${theme.shadows.orangeHighlight};
+    box-shadow: ${theme.shadows.orangeHighlight};
     cursor: pointer;
   }
 `;
@@ -180,13 +180,13 @@ const selectedStyle = css`
     background-color: ${theme.colors.white};
     border: 1px solid ${theme.colors.white};
     transition: all 200ms ease-out;
-    :hover {
+    &:hover {
       color: ${theme.colors.white};
       background-color: ${theme.colors.primary};
       border: 1px solid ${theme.colors.white};
       transition: all 200ms ease-out;
     }
-    :active {
+    &:active {
       background-color: ${theme.colors.white};
       color: ${theme.colors.primary};
     }
