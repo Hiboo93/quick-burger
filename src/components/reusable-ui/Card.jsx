@@ -2,6 +2,7 @@ import { css, styled } from "styled-components";
 import { theme } from "../../theme/index.js";
 import { TiDelete } from "react-icons/ti"
 import Button from "./Button.jsx";
+import { fadeInFromRight } from "../../theme/animations.js";
 
 export default function Card({
   title,
@@ -76,6 +77,7 @@ const CardStyled = styled.div`
       padding: 0;
       border: none;
       background: none;
+      animation: ${fadeInFromRight} ${theme.animations.speed.slow} ease-out;
 
       .icon {
         height: 100%;
@@ -163,10 +165,10 @@ const CardStyled = styled.div`
 `;
 
 const hoverableStyle = css`
-  :hover {
+  &:hover {
     transform: scale(1.05);
     transition: ease-out 0.4s;
-    //box-shadow: ${theme.shadows.orangeHighlight};
+    box-shadow: ${theme.shadows.orangeHighlight};
     cursor: pointer;
   }
 `;
@@ -178,13 +180,13 @@ const selectedStyle = css`
     background-color: ${theme.colors.white};
     border: 1px solid ${theme.colors.white};
     transition: all 200ms ease-out;
-    :hover {
+    &:hover {
       color: ${theme.colors.white};
       background-color: ${theme.colors.primary};
       border: 1px solid ${theme.colors.white};
       transition: all 200ms ease-out;
     }
-    :active {
+    &:active {
       background-color: ${theme.colors.white};
       color: ${theme.colors.primary};
     }

@@ -10,6 +10,8 @@ import { checkIfProductIsClicked } from "./helper.jsx";
 import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../../enums/product.jsx";
 import { isEmpty } from "../../../../../../utils/array.js";
 import Loader from "./Loader.jsx";
+import { TransitionGroup, CSSTransition } from "react-transition-group"
+import { menuAnimation } from "../../../../../../theme/animations.js";
 
 export default function Menu() {
   //const [menu, setMenu] = useState(fakeMenu.MEDIUM);
@@ -50,24 +52,25 @@ export default function Menu() {
   }
 
   return (
-    <MenuStyled className="menu">
+    <TransitionGroup component={MenuStyled} className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
         return (
-          <Card
-            key={id}
-            title={title}
-            imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
-            leftDescription={formatPrice(price)}
-            hasDeletButton={isModeAdmin}
-            onDelete={(event) => handleCardDelete(event, id)}
-            onClick={isModeAdmin ? () => handleProductSelected(id) : null}
-            isHoverable={isModeAdmin}
-            isSelected={checkIfProductIsClicked(id, productSelected.id)}
-            onAdd={(event) => handleAddButoon(event, id)}
-          />
+          <CSSTransition classNames="animation-menu" key={id} timeout={300}>
+            <Card
+              title={title}
+              imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
+              leftDescription={formatPrice(price)}
+              hasDeletButton={isModeAdmin}
+              onDelete={(event) => handleCardDelete(event, id)}
+              onClick={isModeAdmin ? () => handleProductSelected(id) : null}
+              isHoverable={isModeAdmin}
+              isSelected={checkIfProductIsClicked(id, productSelected.id)}
+              onAdd={(event) => handleAddButoon(event, id)}
+            />
+          </CSSTransition>
         );
       })}
-    </MenuStyled>
+    </TransitionGroup>
   );
 }
 
@@ -81,4 +84,6 @@ const MenuStyled = styled.div`
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   overflow-y: scroll;
+
+  ${menuAnimation}
 `;
