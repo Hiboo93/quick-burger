@@ -10,8 +10,8 @@ import { useBasket } from "../../../hooks/useBasket.jsx";
 import { findObjectById } from "../../../utils/array.js";
 //import { getUser } from "../../../api/user.js";
 import { useParams } from "react-router-dom";
-import { getMenu } from "../../../api/product.js";
-import { getLocalStorage } from "../../../utils/window.js";
+import { initialiseUserSession } from "./helpers/initialiseUserSession.jsx";
+
 
 function OrderPage() {
   // state
@@ -22,7 +22,8 @@ function OrderPage() {
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
   const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } =
     useMenu();
-  const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } = useBasket();
+  const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } =
+    useBasket();
   const { username } = useParams();
 
   const handleProductSelected = (idProductClicked) => {
@@ -32,23 +33,8 @@ function OrderPage() {
     setProductSelected(productClickedOn);
   };
 
-  const intialiseMenu = async () => {
-    const menuReceived = await getMenu(username);
-    setMenu(menuReceived);
-  };
-
-  const intialiseBasket = () => {
-    const basketReceived = getLocalStorage(username)
-    if (!basketReceived) setBasket(basketReceived)
-  }
-
-  const intialiseUserSession = async () => {
-    await intialiseMenu();
-    intialiseBasket();
-  }
-
   useEffect(() => {
-    intialiseUserSession()
+    initialiseUserSession(username, setMenu, setBasket);
   }, []);
 
   const orderContextValue = {
