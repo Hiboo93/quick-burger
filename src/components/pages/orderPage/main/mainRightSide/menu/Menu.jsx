@@ -42,10 +42,8 @@ export default function Menu() {
     handleAddToBasket(idProductToAdd, username);
   };
 
-  if (menu === undefined) {
-    return <Loader/>
-  }
-
+  if (menu === undefined) return <Loader/>
+  
   if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />;
     return <EmptyMenuAdmin onReset={() => resetMenu(username)} />;

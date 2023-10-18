@@ -9,7 +9,6 @@ import CasinoEffect from "../../../../../reusable-ui/CasinoEffect.jsx";
 
 export default function BasketHeader() {
   const { basket, menu } = useContext(OrderContext);
-
   const sumToPay = calculateSumToPay(basket, menu);
 
   return (
@@ -20,7 +19,23 @@ export default function BasketHeader() {
       </BasketHeaderStyled>
     </Header>
   );
+
+
+    // if (basket && menu) {
+    //   const sumToPay = calculateSumToPay(basket, menu);
+    //   return (
+    //     <Header>
+    //       <BasketHeaderStyled>
+    //         <span className="total">Total</span>
+    //         <CasinoEffect count={formatPrice(sumToPay)} />
+    //       </BasketHeaderStyled>
+    //     </Header>
+    //   );
+    // } else {
+    //   return null; // Ou un message d'erreur ou de chargement, selon vos besoins.
+    // }
 }
+
 
 const BasketHeaderStyled = styled.div`
   height: 100%;

@@ -10,18 +10,18 @@ import { authenticateUser } from "../../../api/user.js";
 import Welcome from "./Welcome.jsx";
 
 function LoginForm() {
-  const [userName, setUserName] = useState("");
+  const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    authenticateUser(userName)
-    setUserName("");
-    navigate(`/order/${userName}`);
+     const userReceived = await authenticateUser(username)
+    setUsername("");
+    navigate(`/order/${userReceived.username}`);
   };
 
   const handleChange = (event) => {
-    setUserName(event.target.value);
+    setUsername(event.target.value);
   };
 
   return (
@@ -29,7 +29,7 @@ function LoginForm() {
       <Welcome/>
       <div>
         <TextInput
-          value={userName}
+          value={username}
           onChange={handleChange}
           placeholder={"Entrez votre prénom"}
           required
