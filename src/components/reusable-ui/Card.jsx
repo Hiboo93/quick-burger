@@ -16,7 +16,7 @@ export default function Card({
   onAdd,
 }) {
   return (
-    <CardStyled className="produit" onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
+    <CardStyled className="produit" onClick={onClick} $isHoverable={isHoverable} $isSelected={isSelected}>
       <div className="card">
         {hasDeletButton && (
           <button

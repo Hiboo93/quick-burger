@@ -20,3 +20,8 @@ export const isEmpty = (array) => {
   return array.length === 0
 }
 
+// export const isEmpty = (array) => {
+//   return array === null || (Array.isArray(array) && array.length === 0);
+// };
+
+
