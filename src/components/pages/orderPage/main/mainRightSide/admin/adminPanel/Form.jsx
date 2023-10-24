@@ -27,6 +27,14 @@ const Form = ({ product, onSubmit, onChange, onFocus, onBlur, children }) => {
             onBlur={onBlur}
           />
         ))}
+        <select name="isAvailable" className="is-available" id="3">
+          <option value="true">En stock</option>
+          <option value="false">En rupture</option>
+        </select>
+        <select name="isPublicised" className="is-publicised" id="4">
+          <option value="true">Sans pub</option>
+          <option value="false">Avec pub</option>
+        </select>
       </div>
       <div className="form-footer">{children}</div>
     </FormStyled>
@@ -53,6 +61,7 @@ const FormStyled = styled.form`
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(3, 1fr);
     grid-row-gap: 8px;
+    grid-column-gap: 8px;
 
     .title {
       grid-area: 1/1/2/4;
@@ -63,6 +72,14 @@ const FormStyled = styled.form`
     .price {
       background: red;
       grid-area: 3/1/4/2;
+    }
+
+    .is-available {
+      background: pink;
+
+    }
+    .is-publicised {
+      background: yellow
     }
   }
 
