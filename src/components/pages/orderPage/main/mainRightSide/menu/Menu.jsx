@@ -61,8 +61,8 @@ export default function Menu() {
               hasDeletButton={isModeAdmin}
               onDelete={(event) => handleCardDelete(event, id)}
               onClick={isModeAdmin ? () => handleProductSelected(id) : null}
-              isHoverable={isModeAdmin}
-              isSelected={checkIfProductIsClicked(id, productSelected.id)}
+              $isHoverable={isModeAdmin}
+              $isSelected={checkIfProductIsClicked(id, productSelected.id)}
               onAdd={(event) => handleAddButoon(event, id)}
             />
           </CSSTransition>

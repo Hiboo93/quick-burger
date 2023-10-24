@@ -46,8 +46,8 @@ export default function BasketProducts() {
                   }
                   quantity={basketProduct.quantity}
                   onDelete={(event) => handleOnDelete(event, basketProduct.id)}
-                  isClickable={isModeAdmin}
-                  isSelected={checkIfProductIsClicked(
+                  $isClickable={isModeAdmin}
+                  $isSelected={checkIfProductIsClicked(
                     basketProduct.id,
                     productSelected.id
                   )}
