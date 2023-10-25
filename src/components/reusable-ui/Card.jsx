@@ -2,7 +2,7 @@ import { css, styled } from "styled-components";
 import { theme } from "../../theme/index.js";
 import { TiDelete } from "react-icons/ti"
 import Button from "./Button.jsx";
-import { fadeInFromRight } from "../../theme/animations.js";
+import { fadeInFromRight, fadeInFromTop } from "../../theme/animations.js";
 
 export default function Card({
   title,
@@ -14,9 +14,16 @@ export default function Card({
   $isHoverable,
   $isSelected,
   onAdd,
+  overlapImageSource,
+  isOverlapImageVisible,
 }) {
   return (
-    <CardStyled className="produit" onClick={onClick} $isHoverable={$isHoverable} $isSelected={$isSelected}>
+    <CardStyled
+      className="produit"
+      onClick={onClick}
+      $isHoverable={$isHoverable}
+      $isSelected={$isSelected}
+    >
       <div className="card">
         {hasDeletButton && (
           <button
@@ -29,20 +36,35 @@ export default function Card({
         )}
 
         <div className="image">
+          {isOverlapImageVisible && (
+            <div className="overlap">
+              <div className="transparent-layer"></div>
+              <img
+                className="overlap-image"
+                src={overlapImageSource}
+                alt="overlap"
+              />
+            </div>
+          )}
           <img src={imageSource} alt={title} />
         </div>
+
         <div className="text-info">
           <div className="title">{title}</div>
           <div className="description">
             <div className="left-description">{leftDescription}</div>
             <div className="right-description">
-              <Button className="primary-button" label={"Ajouter"} onClick={onAdd} />
+              <Button
+                className="primary-button"
+                label={"Ajouter"}
+                onClick={onAdd}
+              />
             </div>
           </div>
         </div>
       </div>
     </CardStyled>
-  )
+  );
 }
 
 const CardStyled = styled.div`
@@ -95,8 +117,8 @@ const CardStyled = styled.div`
 
     .image {
       //border: 1px solid yellow;
-      width: 100%;
-      height: auto;
+      /* width: 100%;
+      height: auto; */
       margin-top: 30px;
       margin-bottom: 20px;
 
@@ -105,6 +127,33 @@ const CardStyled = styled.div`
         height: 100%;
         object-fit: contain;
       }
+
+      .overlap {
+        .overlap-image {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 80%;
+          height: 100%;
+          z-index: 1;
+          animation: ${fadeInFromTop} 500ms;
+          border-radius: ${theme.borderRadius.extraRound};
+        }
+
+        .transparent-layer {
+          height: 100%;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 70%;
+          background: snow;
+          z-index: 1;
+          border-radius: ${theme.borderRadius.extraRound};
+        }
+      }
+
     }
 
     .text-info {

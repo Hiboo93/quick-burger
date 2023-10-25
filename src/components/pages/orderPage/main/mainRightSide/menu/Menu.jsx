@@ -7,7 +7,7 @@ import OrderContext from "../../../../../../context/OrderContext.jsx";
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
 import EmptyMenuClient from "./EmptyMenuClient.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
-import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../../enums/product.jsx";
+import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT, IMAGE_NO_STOCK } from "../../../../../../enums/product.jsx";
 import { isEmpty } from "../../../../../../utils/array.js";
 import Loader from "./Loader.jsx";
 import { TransitionGroup, CSSTransition } from "react-transition-group"
@@ -64,6 +64,8 @@ export default function Menu() {
               $isHoverable={isModeAdmin}
               $isSelected={checkIfProductIsClicked(id, productSelected.id)}
               onAdd={(event) => handleAddButoon(event, id)}
+              overlapImageSource={IMAGE_NO_STOCK}
+              isOverlapImageVisible={true}
             />
           </CSSTransition>
         );
