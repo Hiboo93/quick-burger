@@ -12,6 +12,7 @@ import { isEmpty } from "../../../../../../utils/array.js";
 import Loader from "./Loader.jsx";
 import { TransitionGroup, CSSTransition } from "react-transition-group"
 import { menuAnimation } from "../../../../../../theme/animations.js";
+import { convertStringToBoolean } from "../../../../../../utils/string.js";
 
 export default function Menu() {
   //const [menu, setMenu] = useState(fakeMenu.MEDIUM);
@@ -51,7 +52,7 @@ export default function Menu() {
 
   return (
     <TransitionGroup component={MenuStyled} className="menu">
-      {menu.map(({ id, title, imageSource, price }) => {
+      {menu.map(({ id, title, imageSource, price, isAvailable }) => {
         return (
           <CSSTransition classNames="animation-menu" key={id} timeout={300}>
             <Card
@@ -65,7 +66,7 @@ export default function Menu() {
               $isSelected={checkIfProductIsClicked(id, productSelected.id)}
               onAdd={(event) => handleAddButoon(event, id)}
               overlapImageSource={IMAGE_NO_STOCK}
-              isOverlapImageVisible={true}
+              isOverlapImageVisible={convertStringToBoolean(isAvailable) === false}
             />
           </CSSTransition>
         );
