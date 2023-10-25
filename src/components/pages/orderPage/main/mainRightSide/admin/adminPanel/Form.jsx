@@ -35,6 +35,8 @@ const Form = ({ product, onSubmit, onChange, onFocus, onBlur, children }) => {
             {...inputSelect}
             onChange={onChange}
             key={inputSelect.id}
+            onFocus={onFocus}
+            onBlur={onBlur}
           />
         ))}
       </div>
