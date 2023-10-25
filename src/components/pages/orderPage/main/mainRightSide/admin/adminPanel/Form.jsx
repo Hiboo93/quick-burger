@@ -2,25 +2,18 @@ import React from "react"
 import styled from "styled-components"
 import TextInput from "../../../../../../reusable-ui/TextInput"
 import ImagePreview from "./ImagePreview"
-import { getInputTextsConfig } from "./inputTextConfig"
+import { getInputTextsConfig, getSelectInputConfig } from "./inputTextConfig"
 import SelectInput from "../../../../../../reusable-ui/SelectInput.jsx"
 
-const isAvailableoptions = [
-  {value: true, label: "En stock"},
-  {value: false, label: "En rupture"},
-]
 
-const isPublicisedoptions = [
-  {value: true, label: "Sans Pub"},
-  {value: false, label: "Avec Pub"},
-]
 
 const Form = ({ product, onSubmit, onChange, onFocus, onBlur, children }) => {
   // state (vide)
 
   // comportements (vide)
 
-  const inputTexts = getInputTextsConfig(product)
+  const inputTexts = getInputTextsConfig(product);
+  const inputSelects = getSelectInputConfig(product)
 
   // affichage
   return (
@@ -37,13 +30,12 @@ const Form = ({ product, onSubmit, onChange, onFocus, onBlur, children }) => {
             onBlur={onBlur}
           />
         ))}
-        <SelectInput options={isAvailableoptions} className="is-available" />
-        <SelectInput options={isPublicisedoptions} className="is-publicised" />
+        {inputSelects.map((inputSelect) => (<SelectInput key={inputSelect.id} {...inputSelect} />))}
       </div>
       <div className="form-footer">{children}</div>
     </FormStyled>
-  )
-}
+  );
+};
 
 export default Form
 
