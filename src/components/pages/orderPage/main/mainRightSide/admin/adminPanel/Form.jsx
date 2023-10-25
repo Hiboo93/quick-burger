@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import TextInput from "../../../../../../reusable-ui/TextInput"
 import ImagePreview from "./ImagePreview"
-import { getInputTextsConfig, getSelectInputConfig } from "./inputTextConfig"
+import { getInputTextsConfig, getSelectInputConfig } from "./inputConfig"
 import SelectInput from "../../../../../../reusable-ui/SelectInput.jsx"
 
 
@@ -13,7 +13,7 @@ const Form = ({ product, onSubmit, onChange, onFocus, onBlur, children }) => {
   // comportements (vide)
 
   const inputTexts = getInputTextsConfig(product);
-  const inputSelects = getSelectInputConfig(product)
+  const inputSelects = getSelectInputConfig(product);
 
   // affichage
   return (
@@ -30,7 +30,13 @@ const Form = ({ product, onSubmit, onChange, onFocus, onBlur, children }) => {
             onBlur={onBlur}
           />
         ))}
-        {inputSelects.map((inputSelect) => (<SelectInput key={inputSelect.id} {...inputSelect} />))}
+        {inputSelects.map((inputSelect) => (
+          <SelectInput
+            {...inputSelect}
+            onChange={onChange}
+            key={inputSelect.id}
+          />
+        ))}
       </div>
       <div className="form-footer">{children}</div>
     </FormStyled>

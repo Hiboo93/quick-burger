@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components';
 
-export default function SelectInput({ options, name, className, id }) {
+export default function SelectInput({ value, options, name, className, id, onChange }) {
   return (
-    <SelectInputStyled name={name} className={className} id={id}>
+    <SelectInputStyled value={value} name={name} className={className} id={id} onChange={onChange}>
       {options.map(({ value, label }) => (
-        <option value={value}>{label}</option>
+        <option key={label} value={value}>{label}</option>
       ))}
     </SelectInputStyled>
   );
