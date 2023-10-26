@@ -17,7 +17,7 @@ export const ribbonAnimation = css`
     opacity: 0.1;
     transform: scale(1.8);
     &.ribbon-animation-appear-active {
-        transition: ease-in-out;
+        transition: ease-in-out 500ms;
         opacity: 1;
         transform: scale(1);
     }
