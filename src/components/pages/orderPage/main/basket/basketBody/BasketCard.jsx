@@ -1,4 +1,4 @@
-import { formatPrice } from "../../../../../../utils/maths.js";
+
 import styled, { css } from "styled-components";
 import { theme } from "../../../../../../theme/index.js";
 import { MdDeleteForever } from "react-icons/md";
@@ -33,7 +33,7 @@ export default function BasketCard({
           <div className="title">
             <span>{title}</span>
           </div>
-          <span className="price">{formatPrice(price)}</span>
+          <span className="price">{price}</span>
         </div>
         <div className="quantity">
           <CasinoEffect count={`x ${quantity}`}/>
