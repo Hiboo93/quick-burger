@@ -1,4 +1,3 @@
-
 import styled, { css } from "styled-components";
 import { theme } from "../../../../../../theme/index.js";
 import { MdDeleteForever } from "react-icons/md";
