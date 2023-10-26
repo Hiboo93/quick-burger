@@ -13,6 +13,8 @@ import Loader from "./Loader.jsx";
 import { TransitionGroup, CSSTransition } from "react-transition-group"
 import { menuAnimation } from "../../../../../../theme/animations.js";
 import { convertStringToBoolean } from "../../../../../../utils/string.js";
+import RibbonAnimated, { ribbonAnimation } from "./RibbonAnimated.jsx";
+
 
 export default function Menu() {
   //const [menu, setMenu] = useState(fakeMenu.MEDIUM);
@@ -43,6 +45,8 @@ export default function Menu() {
     handleAddToBasket(idProductToAdd, username);
   };
 
+  let cardContainerClassName = isModeAdmin ? "card-container is-hoverable" : "card-container"
+
   if (menu === undefined) return <Loader/>
   
   if (isEmpty(menu)) {
@@ -52,22 +56,25 @@ export default function Menu() {
 
   return (
     <TransitionGroup component={MenuStyled} className="menu">
-      {menu.map(({ id, title, imageSource, price, isAvailable }) => {
+      {menu.map(({ id, title, imageSource, price, isAvailable, isPublicised }) => {
         return (
           <CSSTransition classNames="animation-menu" key={id} timeout={300}>
-            <Card
-              title={title}
-              imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
-              leftDescription={formatPrice(price)}
-              hasDeletButton={isModeAdmin}
-              onDelete={(event) => handleCardDelete(event, id)}
-              onClick={isModeAdmin ? () => handleProductSelected(id) : null}
-              $isHoverable={isModeAdmin}
-              $isSelected={checkIfProductIsClicked(id, productSelected.id)}
-              onAdd={(event) => handleAddButoon(event, id)}
-              overlapImageSource={IMAGE_NO_STOCK}
-              isOverlapImageVisible={convertStringToBoolean(isAvailable) === false}
-            />
+            <div className={cardContainerClassName}>
+            {convertStringToBoolean(isPublicised) && <RibbonAnimated />}
+              <Card
+                title={title}
+                imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
+                leftDescription={formatPrice(price)}
+                hasDeletButton={isModeAdmin}
+                onDelete={(event) => handleCardDelete(event, id)}
+                onClick={isModeAdmin ? () => handleProductSelected(id) : null}
+                $isHoverable={isModeAdmin}
+                $isSelected={checkIfProductIsClicked(id, productSelected.id)}
+                onAdd={(event) => handleAddButoon(event, id)}
+                overlapImageSource={IMAGE_NO_STOCK}
+                isOverlapImageVisible={convertStringToBoolean(isAvailable) === false}
+              />
+            </div>
           </CSSTransition>
         );
       })}
@@ -87,4 +94,23 @@ const MenuStyled = styled.div`
   overflow-y: scroll;
 
   ${menuAnimation}
+
+  .card-container {
+    position: relative;
+    height: 330px;
+    border-radius: ${theme.borderRadius.extraRound};
+
+    &.is-hoverable {
+      :hover {
+        transform: scale(1.05);
+        transition: ease-out 0.4s;
+      }
+    }
+  }
+
+  .ribbon {
+    z-index: 2;
+  }
+
+  ${ribbonAnimation}
 `;
