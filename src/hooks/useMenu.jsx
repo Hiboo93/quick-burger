@@ -45,8 +45,8 @@ export const useMenu = () => {
      }
    
      const resetMenu = (username) => {
-       setMenu(fakeMenu.SMALL)
-       syncBothMenus(username, fakeMenu.SMALL)
+       setMenu(fakeMenu.LARGE)
+       syncBothMenus(username, fakeMenu.LARGE)
      }
 
      return {menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu}

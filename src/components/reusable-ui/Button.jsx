@@ -7,9 +7,10 @@ export default function Button({
   className,
   onClick,
   version = "normal",
+  disabled,
 }) {
   return (
-    <ButtonStyled className={className} version={version} onClick={onClick}>
+    <ButtonStyled className={className} version={version} onClick={onClick} disabled={disabled}>
       <span>{label}</span>
       <div className="icon">{Icon && Icon}</div>
     </ButtonStyled>
@@ -20,7 +21,7 @@ const ButtonStyled = styled.button`
 ${(props) => extraStyle[props.version]}
 `;
 
-const extraStylePrimary = css`
+const extraStyleNormal = css`
   width: 100%;
   border: 1px solid red;
   display: inline-flex;
@@ -38,6 +39,7 @@ const extraStylePrimary = css`
   color: white;
   background-color: #ff9f1b;
   border: 1px solid #ff9f1b;
+  cursor: pointer;
 
   ${'' /* :hover {
     color: ${theme.colors.primary};
@@ -56,22 +58,23 @@ const extraStylePrimary = css`
     z-index: 2;
   } */}
 
-&:hover:not(:disabled) {
-    background-color: white;
-    color: #ff9f1b;
-    border: 1px solid #ff9f1b;
+&:hover {
+    color: ${theme.colors.primary};
+    background-color: ${theme.colors.white};
+    border: 1px solid ${theme.colors.primary};
     transition: all 200ms ease-out;
   }
 
   &:active {
-    color: white;
-    background-color: #ff9f1b;
-    border: 1px solid #ff9f1b;
+    background-color: ${theme.colors.primary};
+    color: ${theme.colors.primary};
+    //border: 1px solid #ff9f1b;
   }
 
   &:disabled {
-    opacity: 0.6;
+    opacity: 50%;
     cursor: not-allowed;
+    z-index: 2;
   }
 
 
@@ -119,6 +122,6 @@ const extraStyleSuccess = css`
 `;
 
 const extraStyle = {
-  normal: extraStylePrimary,
+  normal: extraStyleNormal,
   success: extraStyleSuccess,
 };

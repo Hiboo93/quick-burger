@@ -2,7 +2,7 @@ import { css, styled } from "styled-components";
 import { theme } from "../../theme/index.js";
 import { TiDelete } from "react-icons/ti"
 import Button from "./Button.jsx";
-import { fadeInFromRight } from "../../theme/animations.js";
+import { fadeInFromRight, fadeInFromTop } from "../../theme/animations.js";
 
 export default function Card({
   title,
@@ -14,9 +14,16 @@ export default function Card({
   $isHoverable,
   $isSelected,
   onAdd,
+  overlapImageSource,
+  isOverlapImageVisible,
 }) {
   return (
-    <CardStyled className="produit" onClick={onClick} $isHoverable={$isHoverable} $isSelected={$isSelected}>
+    <CardStyled
+      className="produit"
+      onClick={onClick}
+      $isHoverable={$isHoverable}
+      $isSelected={$isSelected}
+    >
       <div className="card">
         {hasDeletButton && (
           <button
@@ -29,20 +36,36 @@ export default function Card({
         )}
 
         <div className="image">
-          <img src={imageSource} alt={title} />
+          {isOverlapImageVisible && (
+            <div className="overlap">
+              <div className="transparent-layer"></div>
+              <img
+                className="overlap-image"
+                src={overlapImageSource}
+                alt="overlap"
+              />
+            </div>
+          )}
+          <img className="product" src={imageSource} alt={title} />
         </div>
+
         <div className="text-info">
           <div className="title">{title}</div>
           <div className="description">
             <div className="left-description">{leftDescription}</div>
             <div className="right-description">
-              <Button className="primary-button" label={"Ajouter"} onClick={onAdd} />
+              <Button
+                className="primary-button"
+                label={"Ajouter"}
+                onClick={onAdd}
+                disabled={isOverlapImageVisible}
+              />
             </div>
           </div>
         </div>
       </div>
     </CardStyled>
-  )
+  );
 }
 
 const CardStyled = styled.div`
@@ -95,8 +118,6 @@ const CardStyled = styled.div`
 
     .image {
       //border: 1px solid yellow;
-      width: 100%;
-      height: auto;
       margin-top: 30px;
       margin-bottom: 20px;
 
@@ -105,10 +126,35 @@ const CardStyled = styled.div`
         height: 100%;
         object-fit: contain;
       }
+
+      .overlap {
+        .overlap-image {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 80%;
+          height: 100%;
+          z-index: 1;
+          animation: ${fadeInFromTop} 500ms;
+          border-radius: ${theme.borderRadius.extraRound};
+        }
+
+        .transparent-layer {
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 70%;
+          background: snow;
+          z-index: 1;
+          border-radius: ${theme.borderRadius.extraRound};
+        }
+      }
+
     }
 
     .text-info {
-      //border: 1px solid fuchsia;
       display: grid;
       grid-template-rows: 30% 70%;
       padding: 5px;
@@ -129,12 +175,10 @@ const CardStyled = styled.div`
       }
 
       .description {
-        //border: 1px solid yellow;
         display: grid;
         grid-template-columns: 1fr 1fr;
 
         .left-description {
-          //border: 1px solid blue;
           display: flex;
           justify-content: flex-start;
           align-items: center;
@@ -153,7 +197,6 @@ const CardStyled = styled.div`
 
           .primary-button {
             font-size: ${theme.fonts.size.XS};
-            cursor: pointer;
             padding: 12px;
           }
         }
@@ -166,8 +209,8 @@ const CardStyled = styled.div`
 
 const hoverableStyle = css`
   &:hover {
-    transform: scale(1.05);
-    transition: ease-out 0.4s;
+    ${'' /* transform: scale(1.05);
+    transition: ease-out 0.4s; */}
     box-shadow: ${theme.shadows.orangeHighlight};
     cursor: pointer;
   }
@@ -201,12 +244,12 @@ const selectedStyle = css`
       border: 1px solid white;
       background-color: ${theme.colors.white};
       color: ${theme.colors.primary};
-      :hover {
+      &:hover {
         color: ${theme.colors.white};
         background-color: ${theme.colors.primary};
         border: 1px solid ${theme.colors.white};
       }
-      :active {
+      &:active {
         background-color: ${theme.colors.white};
         color: ${theme.colors.primary};
       }
@@ -216,7 +259,7 @@ const selectedStyle = css`
   .delete-button {
     color: ${theme.colors.white};
 
-    :active {
+    &:active {
       color: ${theme.colors.white};
     }
   }
