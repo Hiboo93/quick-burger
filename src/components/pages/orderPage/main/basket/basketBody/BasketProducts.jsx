@@ -28,8 +28,7 @@ export default function BasketProducts() {
   };
 
   return (
-    <BasketProductsStyled>
-      <TransitionGroup>
+      <TransitionGroup component={BasketProductsStyled} className={"transition-group"}>
         {basket.map((basketProduct) => {
           const menuProduct = findObjectById(basketProduct.id, menu);
           return (
@@ -68,7 +67,6 @@ export default function BasketProducts() {
           );
         })}
       </TransitionGroup>
-    </BasketProductsStyled>
   );
 }
 
