@@ -46,7 +46,7 @@ export default function Card({
               />
             </div>
           )}
-          <img src={imageSource} alt={title} />
+          <img className="product" src={imageSource} alt={title} />
         </div>
 
         <div className="text-info">
@@ -118,8 +118,6 @@ const CardStyled = styled.div`
 
     .image {
       //border: 1px solid yellow;
-      /* width: 100%;
-      height: auto; */
       margin-top: 30px;
       margin-bottom: 20px;
 
@@ -144,7 +142,6 @@ const CardStyled = styled.div`
         .transparent-layer {
           height: 100%;
           width: 100%;
-          height: 100%;
           position: absolute;
           top: 0;
           left: 0;
@@ -158,7 +155,6 @@ const CardStyled = styled.div`
     }
 
     .text-info {
-      //border: 1px solid fuchsia;
       display: grid;
       grid-template-rows: 30% 70%;
       padding: 5px;
@@ -179,12 +175,10 @@ const CardStyled = styled.div`
       }
 
       .description {
-        //border: 1px solid yellow;
         display: grid;
         grid-template-columns: 1fr 1fr;
 
         .left-description {
-          //border: 1px solid blue;
           display: flex;
           justify-content: flex-start;
           align-items: center;
@@ -203,7 +197,6 @@ const CardStyled = styled.div`
 
           .primary-button {
             font-size: ${theme.fonts.size.XS};
-            //cursor: pointer;
             padding: 12px;
           }
         }
@@ -251,12 +244,12 @@ const selectedStyle = css`
       border: 1px solid white;
       background-color: ${theme.colors.white};
       color: ${theme.colors.primary};
-      :hover {
+      &:hover {
         color: ${theme.colors.white};
         background-color: ${theme.colors.primary};
         border: 1px solid ${theme.colors.white};
       }
-      :active {
+      &:active {
         background-color: ${theme.colors.white};
         color: ${theme.colors.primary};
       }
@@ -266,7 +259,7 @@ const selectedStyle = css`
   .delete-button {
     color: ${theme.colors.white};
 
-    :active {
+    &:active {
       color: ${theme.colors.white};
     }
   }
